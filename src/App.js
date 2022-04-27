@@ -26,38 +26,43 @@ class App extends React.Component {
     return (
       <MyProvider>
         <Switch>
-          <Route path="/foods" component={ Foods } />
-          <Route path="/drinks" component={ Drinks } />
-          <Route path="/foods/{id-da-receita}" component={ FoodsDetails } />
-          <Route path="/drinks/{id-da-receita}" component={ DrinkDetails } />
           <Route
+            exact
             path="/foods/{id-da-receita}/in-progress"
             component={ FoodsDetailsProgress }
           />
           <Route
+            exact
             path=" /drinks/{id-da-receita}/in-progress"
             component={ DrinkDetailsProgress }
           />
-          <Route path="/explore" component={ Explore } />
-          <Route path="/explore/foods" component={ ExploreFoods } />
-          <Route path="/explore/drinks" component={ ExploreDrinks } />
+          <Route exact path="/foods/{id-da-receita}" component={ FoodsDetails } />
+          <Route exact path="/drinks/{id-da-receita}" component={ DrinkDetails } />
           <Route
+            exact
             path="/explore/foods/ingredients"
             component={ ExploreFoodsIngredients }
           />
           <Route
+            exact
             path="/explore/drinks/ingredients"
             component={ ExploreDrinksIngredients }
           />
           <Route
+            exact
             path="/explore/foods/nationalities"
             component={ ExploreFoodsNationalities }
           />
-          <Route path="/profile" component={ Profile } />
-          <Route path="/done-recipes" component={ DoneRecipes } />
-          <Route path="/favorite-recipes" component={ FavoriteRecipes } />
+          <Route exact path="/explore/foods" component={ ExploreFoods } />
+          <Route exact path="/explore/drinks" component={ ExploreDrinks } />
+          <Route exact path="/foods" component={ Foods } />
+          <Route exact path="/drinks" component={ Drinks } />
+          <Route exact path="/explore" component={ Explore } />
+          <Route exact path="/profile" component={ Profile } />
+          <Route exact path="/done-recipes" component={ DoneRecipes } />
+          <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
           <Route exact path="/" component={ Login } />
-          <Route path="/not-found" component={ NotFound } />
+          <Route path="*" component={ NotFound } />
         </Switch>
       </MyProvider>
     );

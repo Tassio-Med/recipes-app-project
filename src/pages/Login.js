@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import MyContext from '../context/MyContext';
 
 class Login extends React.Component {
@@ -31,14 +32,16 @@ class Login extends React.Component {
             />
           </label>
           <br />
-          <button
-            type="button"
-            data-testid="login-submit-btn"
-            onClick={ handleBtnLogin }
-            disabled={ isBtnDisable }
-          >
-            Enter
-          </button>
+          <Link to="/foods">
+            <button
+              type="button"
+              data-testid="login-submit-btn"
+              onClick={ handleBtnLogin }
+              disabled={ isBtnDisable }
+            >
+              Enter
+            </button>
+          </Link>
         </section>
       </>
     );

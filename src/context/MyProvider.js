@@ -24,8 +24,8 @@ class MyProvider extends React.Component {
     const regexEmail = (/^[^@]+@[^@]+\.[^@]+$/i);
     const validEmail = regexEmail.test(emailInput);
 
-    const MIN_LENGTH_VALUE = 6;
-    const validPassWord = passwordInput.length > MIN_LENGTH_VALUE;
+    const SIX = 6;
+    const validPassWord = passwordInput.length > SIX;
 
     const validLogin = validEmail && validPassWord;
     // console.log(validEmail, validPassWord);
@@ -42,7 +42,14 @@ class MyProvider extends React.Component {
   }
 
   handleBtnLogin = () => {
-    console.log('vai enviar');
+    const { emailInput } = this.state;
+
+    const userEmail = emailInput;
+    const userLogin = { email: `${userEmail}` };
+
+    localStorage.setItem('mealsToken', 1);
+    localStorage.setItem('cocktailsToken', 1);
+    localStorage.setItem('user', JSON.stringify(userLogin));
   }
 
   render() {
