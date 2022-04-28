@@ -1,0 +1,8 @@
+.boxHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.HeaderNoSearch {
+  display: flex;
+}
