@@ -26,16 +26,11 @@ class Drinks extends React.Component {
         titleDrinks: titleName,
       });
     }
-  }
+  };
 
   render() {
     const { titleDrinks } = this.state;
-    return (
-      <>
-        <Header titlePage={ titleDrinks } />
-        <p>teste</p>
-      </>
-    );
+    return <Header titlePage={ titleDrinks } />;
   }
 }
 

@@ -26,16 +26,11 @@ class Foods extends React.Component {
         titleFood: titleName,
       });
     }
-  }
+  };
 
   render() {
     const { titleFood } = this.state;
-    return (
-      <>
-        <Header titlePage={ titleFood } />
-        <p>teste</p>
-      </>
-    );
+    return <Header titlePage={ titleFood } />;
   }
 }
 

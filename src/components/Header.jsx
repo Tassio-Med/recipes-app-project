@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import './Header.css';
-import SearchBar from './SearchBar';
+import SearchBarFoods from './SearchBarFoods';
+import SearchBarDrinks from './SearchBarDrinks';
+import MyContext from '../context/MyContext';
 
 class Header extends React.Component {
   constructor() {
     super();
     this.state = {
-      showSearchBar: false,
+      showSearchBar: '',
     };
   }
 
@@ -23,7 +25,8 @@ class Header extends React.Component {
   render() {
     const { titlePage } = this.props;
     const { showSearchBar } = this.state;
-
+    // eslint-disable-next-line max-len
+    const compareBarSearch = titlePage === 'Drinks' ? <SearchBarDrinks /> : <SearchBarFoods />;
     return (
       <>
         <nav className="boxHeader">
@@ -43,7 +46,7 @@ class Header extends React.Component {
             onClick={ this.handleSearchBar }
           />
         </nav>
-        <div className="boxSearch">{showSearchBar ? <SearchBar /> : null}</div>
+        <div className="boxSearch">{showSearchBar && compareBarSearch}</div>
       </>
     );
   }
@@ -52,5 +55,7 @@ class Header extends React.Component {
 Header.propTypes = {
   titlePage: PropTypes.string.isRequired,
 };
+
+Header.contextType = MyContext;
 
 export default Header;
