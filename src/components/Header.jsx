@@ -25,8 +25,8 @@ class Header extends React.Component {
   render() {
     const { titlePage } = this.props;
     const { showSearchBar } = this.state;
-    // eslint-disable-next-line max-len
-    const compareBarSearch = titlePage === 'Drinks' ? <SearchBarDrinks /> : <SearchBarFoods />;
+    const compareBarSearch = titlePage === 'Drinks'
+      ? <SearchBarDrinks /> : <SearchBarFoods />;
     return (
       <>
         <nav className="boxHeader">
