@@ -44,23 +44,23 @@ class MyProvider extends React.Component {
     }
   };
 
-  conditionalApiCallFood = () => {
+  conditionalApiCallFood = async () => {
     const { searchValue, filterRadios } = this.state;
     let data;
     if (filterRadios === 'ingredient') {
-      data = setFilterIngredientFood(searchValue);
+      data = await setFilterIngredientFood(searchValue);
       this.setState({
         dataIngredient: data,
       });
     }
     if (filterRadios === 'name') {
-      data = setFilterNameFood(searchValue);
+      data = await setFilterNameFood(searchValue);
       this.setState({
         dataName: data,
       });
     }
     if (filterRadios === 'firstLetter') {
-      data = setFilterFirstLetterFood(searchValue);
+      data = await setFilterFirstLetterFood(searchValue);
       this.setState({
         dataFirstLetter: data,
       });

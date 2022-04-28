@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import MyContext from '../context/MyContext';
 
@@ -29,8 +30,18 @@ class Foods extends React.Component {
   };
 
   render() {
+    const { dataName } = this.context;
+    // console.log(dataName.meals[0].idMeal);
     const { titleFood } = this.state;
-    return <Header titlePage={ titleFood } />;
+    const firstID = dataName.meals.idMeal;
+    const pathRec = `/foods/${firstID}`;
+    const compareDataName = dataName.length <= 1 ? <Redirect to={ pathRec } /> : dataName;
+    return (
+      <>
+        <Header titlePage={ titleFood } />
+        <main>{compareDataName}</main>
+      </>
+    );
   }
 }
 
