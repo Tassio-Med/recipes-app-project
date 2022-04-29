@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import MyContext from '../context/MyContext';
+import Footer from '../components/Footer';
 
 class Drinks extends React.Component {
   constructor() {
@@ -30,7 +31,12 @@ class Drinks extends React.Component {
 
   render() {
     const { titleDrinks } = this.state;
-    return <Header titlePage={ titleDrinks } />;
+    return (
+      <>
+        <Header titlePage={ titleDrinks } />
+        <Footer />
+      </>
+    );
   }
 }
 

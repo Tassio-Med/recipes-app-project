@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MyContext from '../context/MyContext';
 import HeaderNoSearch from '../components/HeaderNoSearch';
+import Footer from '../components/Footer';
 
 class ExploreFoodsIngredients extends React.Component {
   constructor() {
@@ -26,14 +27,14 @@ class ExploreFoodsIngredients extends React.Component {
         titleFoodsIngred: titleName,
       });
     }
-  }
+  };
 
   render() {
     const { titleFoodsIngred } = this.state;
     return (
       <>
         <HeaderNoSearch titlePage={ titleFoodsIngred } />
-        <p>teste</p>
+        <Footer />
       </>
     );
   }
