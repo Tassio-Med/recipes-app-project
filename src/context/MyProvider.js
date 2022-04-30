@@ -131,12 +131,9 @@ class MyProvider extends React.Component {
   handleBtnLogin = () => {
     const { emailInput } = this.state;
 
-    const userEmail = emailInput;
-    const userLogin = { email: `${userEmail}` };
-
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
-    localStorage.setItem('user', JSON.stringify(userLogin));
+    localStorage.setItem('user', JSON.stringify({ email: emailInput }));
   };
 
   render() {

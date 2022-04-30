@@ -29,15 +29,20 @@ class Profile extends React.Component {
     }
   };
 
+  clearLocalStorage = () => {
+    localStorage.clear();
+  };
+
   render() {
+    const userLocalStorage = localStorage.getItem('user');
+    const user = JSON.parse(userLocalStorage);
     const { titleProfile } = this.state;
-    const { emailInput } = this.context;
     return (
       <>
         <HeaderNoSearch titlePage={ titleProfile } />
         <main>
           <div className="boxProfile">
-            <p data-testid="profile-email">{emailInput}</p>
+            <span data-testid="profile-email">{user.email}</span>
             <br />
             <Link to="/done-recipes">
               <button type="button" data-testid="profile-done-btn">
@@ -51,9 +56,15 @@ class Profile extends React.Component {
               </button>
             </Link>
             <br />
-            <button type="button" data-testid="profile-logout-btn">
-              Logout
-            </button>
+            <Link to="/">
+              <button
+                type="button"
+                data-testid="profile-logout-btn"
+                onClick={ this.clearLocalStorage }
+              >
+                Logout
+              </button>
+            </Link>
           </div>
         </main>
       </>
