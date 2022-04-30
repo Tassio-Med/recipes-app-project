@@ -45,9 +45,11 @@ class Profile extends React.Component {
               </button>
             </Link>
             <br />
-            <button type="button" data-testid="profile-favorite-btn">
-              Favorite Recipes
-            </button>
+            <Link to="/favorite-recipes">
+              <button type="button" data-testid="profile-favorite-btn">
+                Favorite Recipes
+              </button>
+            </Link>
             <br />
             <button type="button" data-testid="profile-logout-btn">
               Logout
