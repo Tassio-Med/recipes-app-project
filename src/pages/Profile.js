@@ -30,13 +30,13 @@ class Profile extends React.Component {
 
   render() {
     const { titleProfile } = this.state;
-
+    const { emailInput } = this.context;
     return (
       <>
         <HeaderNoSearch titlePage={ titleProfile } />
         <main>
           <div className="boxProfile">
-            <span data-testid="profile-email">email</span>
+            <span data-testid="profile-email">{emailInput}</span>
             <br />
             <button type="button" data-testid="profile-done-btn">
               Done Recipes
