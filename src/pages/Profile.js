@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import MyContext from '../context/MyContext';
 import HeaderNoSearch from '../components/HeaderNoSearch';
 
@@ -36,11 +37,13 @@ class Profile extends React.Component {
         <HeaderNoSearch titlePage={ titleProfile } />
         <main>
           <div className="boxProfile">
-            <span data-testid="profile-email">{emailInput}</span>
+            <p data-testid="profile-email">{emailInput}</p>
             <br />
-            <button type="button" data-testid="profile-done-btn">
-              Done Recipes
-            </button>
+            <Link to="/done-recipes">
+              <button type="button" data-testid="profile-done-btn">
+                Done Recipes
+              </button>
+            </Link>
             <br />
             <button type="button" data-testid="profile-favorite-btn">
               Favorite Recipes
