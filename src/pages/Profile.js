@@ -26,14 +26,31 @@ class Profile extends React.Component {
         titleProfile: titleName,
       });
     }
-  }
+  };
 
   render() {
     const { titleProfile } = this.state;
+
     return (
       <>
         <HeaderNoSearch titlePage={ titleProfile } />
-        <p>teste</p>
+        <main>
+          <div className="boxProfile">
+            <span data-testid="profile-email">email</span>
+            <br />
+            <button type="button" data-testid="profile-done-btn">
+              Done Recipes
+            </button>
+            <br />
+            <button type="button" data-testid="profile-favorite-btn">
+              Favorite Recipes
+            </button>
+            <br />
+            <button type="button" data-testid="profile-logout-btn">
+              Logout
+            </button>
+          </div>
+        </main>
       </>
     );
   }
