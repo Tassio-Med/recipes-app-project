@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import MyContext from '../context/MyContext';
+import Footer from '../components/Footer';
 import CardRecipeDrinks from '../components/CardRecipeDrinks';
 // import { setDefaultNameDrink } from '../services/apiServicesDrinks';
+
 
 class Drinks extends React.Component {
   constructor() {
@@ -89,6 +91,7 @@ class Drinks extends React.Component {
 
         {/* { defaultCardsDrinks } */}
         { sectionCardsDrinks }
+        <Footer />
       </>
     );
   }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import MyContext from '../context/MyContext';
+import Footer from '../components/Footer';
 import CardRecipeFoods from '../components/CardRecipeFoods';
 // import { setDefaultNameFood } from '../services/apiServicesFoods';
 
@@ -89,6 +90,7 @@ class Foods extends React.Component {
 
         {/* { defaultCardFood } */}
         { sectionCardsFood }
+         <Footer />
       </>
     );
   }
@@ -101,7 +103,3 @@ Foods.propTypes = {
 Foods.contextType = MyContext;
 
 export default Foods;
-
-// const { history } = this.props;
-// history.push(pathRec);
-// history: PropTypes.objectOf(PropTypes.any).isRequired,
