@@ -7,7 +7,6 @@ import Footer from '../components/Footer';
 import CardRecipeDrinks from '../components/CardRecipeDrinks';
 // import { setDefaultNameDrink } from '../services/apiServicesDrinks';
 
-
 class Drinks extends React.Component {
   constructor() {
     super();

@@ -90,7 +90,7 @@ class Foods extends React.Component {
 
         {/* { defaultCardFood } */}
         { sectionCardsFood }
-         <Footer />
+        <Footer />
       </>
     );
   }
