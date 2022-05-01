@@ -21,3 +21,11 @@ export const setFilterFirstLetterFood = async (firstLetter) => {
   // console.log('FL', data);
   return data;
 };
+
+export const setDefaultNameFood = async () => {
+  const urlName = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+  const response = await fetch(urlName);
+  const data = await response.json();
+  // console.log('name', data);
+  return data;
+};
