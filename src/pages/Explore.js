@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import MyContext from '../context/MyContext';
 import HeaderNoSearch from '../components/HeaderNoSearch';
 import Footer from '../components/Footer';
@@ -34,6 +35,20 @@ class Explore extends React.Component {
     return (
       <>
         <HeaderNoSearch titlePage={ titleExplore } />
+        <main>
+          <div>
+            <Link to="/explore/foods">
+              <button type="button" data-testid="explore-foods">
+                Explore Foods
+              </button>
+            </Link>
+            <Link to="/explore/drinks">
+              <button type="button" data-testid="explore-drinks">
+                Explore Drinks
+              </button>
+            </Link>
+          </div>
+        </main>
         <Footer />
       </>
     );
