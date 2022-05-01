@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import MyContext from '../context/MyContext';
 import HeaderNoSearch from '../components/HeaderNoSearch';
 import { fetchAPIRandom } from '../services/apiServicesFoods';
+import Footer from '../components/Footer';
 
 class ExploreFoods extends React.Component {
   constructor() {
@@ -63,6 +64,7 @@ class ExploreFoods extends React.Component {
             </Link>
           </div>
         </main>
+        <Footer />
       </>
     );
   }
