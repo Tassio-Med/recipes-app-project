@@ -6,6 +6,7 @@ import MyContext from '../context/MyContext';
 import Footer from '../components/Footer';
 import CardRecipeFoods from '../components/CardRecipeFoods';
 // import { setDefaultNameFood } from '../services/apiServicesFoods';
+import '../components/CardRecipes.css';
 
 class Foods extends React.Component {
   constructor() {
@@ -47,7 +48,7 @@ class Foods extends React.Component {
 
     const TWELVE = 12;
     const sectionCardsFood = (
-      <section className="boxCardsFood">
+      <section className="boxCards">
         {
           dataName.meals?.map((recipe, index) => (
             <CardRecipeFoods

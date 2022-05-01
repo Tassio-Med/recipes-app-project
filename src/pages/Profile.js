@@ -10,11 +10,21 @@ class Profile extends React.Component {
     super();
     this.state = {
       titleProfile: '',
+      userEmail: '',
     };
   }
 
   componentDidMount() {
     this.handlePageName();
+    this.handleUserEmail();
+  }
+
+  handleUserEmail = () => {
+    const userLocalStorage = localStorage.getItem('user');
+    const userEmail = JSON.parse(userLocalStorage);
+    this.setState({
+      userEmail,
+    });
   }
 
   handlePageName = () => {
@@ -35,15 +45,13 @@ class Profile extends React.Component {
   };
 
   render() {
-    const userLocalStorage = localStorage.getItem('user');
-    const userEmail = JSON.parse(userLocalStorage);
-    const { titleProfile } = this.state;
+    const { titleProfile, userEmail } = this.state;
     return (
       <>
         <HeaderNoSearch titlePage={ titleProfile } />
         <main>
           <div className="boxProfile">
-            <span data-testid="profile-email">{userEmail.email}</span>
+            <span data-testid="profile-email">{ userEmail.email }</span>
             <br />
             <Link to="/done-recipes">
               <button type="button" data-testid="profile-done-btn">

@@ -6,6 +6,7 @@ import MyContext from '../context/MyContext';
 import Footer from '../components/Footer';
 import CardRecipeDrinks from '../components/CardRecipeDrinks';
 // import { setDefaultNameDrink } from '../services/apiServicesDrinks';
+import '../components/CardRecipes.css';
 
 class Drinks extends React.Component {
   constructor() {
@@ -47,7 +48,7 @@ class Drinks extends React.Component {
 
     const TWELVE = 12;
     const sectionCardsDrinks = (
-      <section className="boxCardsDrinks">
+      <section className="boxCards">
         {
           dataName.drinks?.map((recipe, index) => (
             <CardRecipeDrinks
