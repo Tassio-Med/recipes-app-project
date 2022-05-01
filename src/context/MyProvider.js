@@ -25,12 +25,16 @@ class MyProvider extends React.Component {
       dataName: '',
       dataFirstLetter: '',
       pathRec: '',
+      searchOn: false,
     };
   }
 
   handleSearchFood = () => {
     this.conditionalApiCallFood();
     this.alertConditionalByOne();
+    this.setState({
+      searchOn: true,
+    });
   };
 
   conditionalSearchFood = () => {
@@ -66,6 +70,9 @@ class MyProvider extends React.Component {
   handleSearchDrink = () => {
     this.conditionalApiCallDrink();
     this.alertConditionalByOne();
+    this.setState({
+      searchOn: true,
+    });
   };
 
   alertConditionalByOne = () => {

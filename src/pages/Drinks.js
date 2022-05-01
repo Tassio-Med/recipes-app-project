@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import MyContext from '../context/MyContext';
 import Footer from '../components/Footer';
 import CardRecipeDrinks from '../components/CardRecipeDrinks';
-// import { setDefaultNameDrink } from '../services/apiServicesDrinks';
+import { setDefaultNameDrink } from '../services/apiServicesDrinks';
 import '../components/CardRecipes.css';
 
 class Drinks extends React.Component {
@@ -13,21 +13,21 @@ class Drinks extends React.Component {
     super();
     this.state = {
       titleDrinks: '',
-      // defaultData: '',
+      defaultData: '',
     };
   }
 
   componentDidMount() {
     this.handlePageName();
-    // this.handleDefaultData();
+    this.handleDefaultData();
   }
 
-  // handleDefaultData = async () => {
-  //   const responseDefault = await setDefaultNameDrink();
-  //   this.setState({
-  //     defaultData: responseDefault,
-  //   });
-  // }
+  handleDefaultData = async () => {
+    const responseDefault = await setDefaultNameDrink();
+    this.setState({
+      defaultData: responseDefault,
+    });
+  }
 
   handlePageName = () => {
     const { match } = this.props;
@@ -43,8 +43,8 @@ class Drinks extends React.Component {
   };
 
   render() {
-    const { titleDrinks } = this.state;
-    const { pathRec, dataName, searchValue } = this.context;
+    const { titleDrinks, defaultData } = this.state;
+    const { pathRec, dataName, searchValue, searchOn } = this.context;
 
     const TWELVE = 12;
     const sectionCardsDrinks = (
@@ -63,22 +63,23 @@ class Drinks extends React.Component {
       </section>
     );
 
-    // const defaultCardsDrinks = (
-    //   <section className="boxDefaultCardsDrinks">
-    //     {
-    //       defaultData && defaultData.drinks?.map((item, index) => (
-    //         <CardRecipeDrinks
-    //           dataTestINDEX={ index }
-    //           source={ item.strDrinkThumb }
-    //           recipeCardName={ item.strDrink }
-    //           key={ item.idDrink }
-    //           idRecipe={ item.idDrink }
-    //         />
-    //       )).slice(0, TWELVE)
-    //     }
-    //   </section>
-    // );
+    const defaultCardsDrinks = (
+      <section className="boxCards">
+        {
+          defaultData && defaultData.drinks?.map((item, index) => (
+            <CardRecipeDrinks
+              dataTestINDEX={ index }
+              source={ item.strDrinkThumb }
+              recipeCardName={ item.strDrink }
+              key={ item.idDrink }
+              idRecipe={ item.idDrink }
+            />
+          )).slice(0, TWELVE)
+        }
+      </section>
+    );
 
+    const comparSearchON = searchOn ? sectionCardsDrinks : defaultCardsDrinks;
     const alertNoRecipes = 'Sorry, we haven\'t found any recipes for these filters.';
 
     return (
@@ -89,8 +90,7 @@ class Drinks extends React.Component {
         { (dataName.drinks === null && searchValue !== '')
           && global.alert(alertNoRecipes) }
 
-        {/* { defaultCardsDrinks } */}
-        { sectionCardsDrinks }
+        { comparSearchON }
         <Footer />
       </>
     );
