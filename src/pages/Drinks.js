@@ -5,32 +5,24 @@ import Header from '../components/Header';
 import MyContext from '../context/MyContext';
 import Footer from '../components/Footer';
 import CardRecipeDrinks from '../components/CardRecipeDrinks';
-import { setDefaultNameDrink } from '../services/apiServicesDrinks';
 import '../components/CardRecipes.css';
+import FiltersCategoryDrink from '../components/FiltersCategoryDrink';
 
 class Drinks extends React.Component {
   constructor() {
     super();
     this.state = {
       titleDrinks: '',
-      defaultData: '',
     };
   }
 
   componentDidMount() {
     this.handlePageName();
-    this.handleDefaultData();
-  }
-
-  handleDefaultData = async () => {
-    const responseDefault = await setDefaultNameDrink();
-    this.setState({
-      defaultData: responseDefault,
-    });
   }
 
   handlePageName = () => {
     const { match } = this.props;
+    const { handleDefaultDataDrink } = this.context;
 
     let titleName;
 
@@ -40,11 +32,12 @@ class Drinks extends React.Component {
         titleDrinks: titleName,
       });
     }
+    handleDefaultDataDrink();
   };
 
   render() {
-    const { titleDrinks, defaultData } = this.state;
-    const { pathRec, dataName, searchValue, searchOn } = this.context;
+    const { titleDrinks } = this.state;
+    const { pathRec, dataName, searchValue, searchOn, defaultDataDrink } = this.context;
 
     const TWELVE = 12;
     const sectionCardsDrinks = (
@@ -66,7 +59,7 @@ class Drinks extends React.Component {
     const defaultCardsDrinks = (
       <section className="boxCards">
         {
-          defaultData && defaultData.drinks?.map((item, index) => (
+          defaultDataDrink && defaultDataDrink.drinks?.map((item, index) => (
             <CardRecipeDrinks
               dataTestINDEX={ index }
               source={ item.strDrinkThumb }
@@ -86,11 +79,15 @@ class Drinks extends React.Component {
       <>
         <Header titlePage={ titleDrinks } />
         { pathRec && <Redirect to={ pathRec } /> }
-
         { (dataName.drinks === null && searchValue !== '')
           && global.alert(alertNoRecipes) }
 
-        { comparSearchON }
+        <FiltersCategoryDrink />
+
+        <section className="boxRecipes">
+          { comparSearchON }
+        </section>
+
         <Footer />
       </>
     );

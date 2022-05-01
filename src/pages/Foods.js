@@ -5,32 +5,24 @@ import Header from '../components/Header';
 import MyContext from '../context/MyContext';
 import Footer from '../components/Footer';
 import CardRecipeFoods from '../components/CardRecipeFoods';
-import { setDefaultNameFood } from '../services/apiServicesFoods';
 import '../components/CardRecipes.css';
+import FiltersCategoryFood from '../components/FiltersCategoryFood';
 
 class Foods extends React.Component {
   constructor() {
     super();
     this.state = {
       titleFood: '',
-      defaultData: '',
     };
   }
 
   componentDidMount() {
     this.handlePageName();
-    this.handleDefaultData();
-  }
-
-  handleDefaultData = async () => {
-    const responseDefault = await setDefaultNameFood();
-    this.setState({
-      defaultData: responseDefault,
-    });
   }
 
   handlePageName = () => {
     const { match } = this.props;
+    const { handleDefaultDataFood } = this.context;
 
     let titleName;
 
@@ -40,13 +32,15 @@ class Foods extends React.Component {
         titleFood: titleName,
       });
     }
+    handleDefaultDataFood();
   };
 
   render() {
-    const { titleFood, defaultData } = this.state;
-    const { pathRec, dataName, searchValue, searchOn } = this.context;
+    const { titleFood } = this.state;
+    const { pathRec, dataName, searchValue, searchOn, defaultDataFood } = this.context;
 
     const TWELVE = 12;
+
     const sectionCardsFood = (
       <section className="boxCards">
         {
@@ -66,7 +60,7 @@ class Foods extends React.Component {
     const defaultCardFood = (
       <section className="boxCards">
         {
-          defaultData && defaultData.meals?.map((item, index) => (
+          defaultDataFood && defaultDataFood.meals?.map((item, index) => (
             <CardRecipeFoods
               dataTestINDEX={ index }
               source={ item.strMealThumb }
@@ -86,11 +80,14 @@ class Foods extends React.Component {
       <>
         <Header titlePage={ titleFood } />
         { pathRec && <Redirect to={ pathRec } /> }
-
         { (dataName.meals === null && searchValue !== '')
           && global.alert(alertNoRecipes) }
 
-        { comparSearchON }
+        <FiltersCategoryFood />
+
+        <section id="boxRecipes">
+          { comparSearchON }
+        </section>
         <Footer />
       </>
     );

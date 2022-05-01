@@ -10,24 +10,14 @@ class Profile extends React.Component {
     super();
     this.state = {
       titleProfile: '',
-      // userEmail: '',
     };
   }
 
   componentDidMount() {
     this.handlePageName();
-    // this.handleUserEmail();
+    // const { handleUserEmail } = this.context;
+    // handleUserEmail();
   }
-
-  // handleUserEmail = () => {
-  //   const userLocalStorage = localStorage.getItem('user');
-  //   const userEmail = JSON.parse(userLocalStorage);
-  //   console.log(userEmail.email);
-
-  //   this.setState({
-  //     userEmail: userEmail.email,
-  //   });
-  // }
 
   handlePageName = () => {
     const { match } = this.props;
@@ -48,17 +38,14 @@ class Profile extends React.Component {
 
   render() {
     const { titleProfile } = this.state;
-
-    // const comparSearch = (!userEmail !== false) && userEmail;
-
-    // console.log(!userEmail === false);
+    // const { userEmail } = this.context;
 
     return (
       <>
         <HeaderNoSearch titlePage={ titleProfile } />
         <main>
           <div className="boxProfile">
-            {/* <span data-testid="profile-email">{ comparSearch }</span> */}
+            {/* <p data-testid="profile-email">{ userEmail }</p> */}
             <br />
             <Link to="/done-recipes">
               <button type="button" data-testid="profile-done-btn">

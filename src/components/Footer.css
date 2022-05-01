@@ -1,8 +1,7 @@
 .boxFooter {
+  align-content: flex-end;
   background-color: rgb(199, 150, 27);
-  bottom: 0;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  position: fixed;
-  width: 100%;
 }

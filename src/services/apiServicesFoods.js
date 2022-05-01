@@ -37,3 +37,19 @@ export const fetchAPIRandom = async () => {
   const data = await response.json();
   return data.meals[0].idMeal;
 };
+
+export const fetchCategoryListFood = async () => {
+  const urlName = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
+  const response = await fetch(urlName);
+  const data = await response.json();
+  // console.log('list', data);
+  return data;
+};
+
+// export const fetchByCategory = async (btnName) => {
+//   const urlName = `www.themealdb.com/api/json/v1/1/filter.php?c=${btnName}`;
+//   const response = await fetch(urlName);
+//   const data = await response.json();
+//   // console.log('list', data);
+//   return data;
+// };
