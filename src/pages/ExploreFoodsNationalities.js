@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MyContext from '../context/MyContext';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 class ExploreFoodsNationalities extends React.Component {
   constructor() {
@@ -26,14 +27,14 @@ class ExploreFoodsNationalities extends React.Component {
         titleFoodsNacionalite: titleName,
       });
     }
-  }
+  };
 
   render() {
     const { titleFoodsNacionalite } = this.state;
     return (
       <>
         <Header titlePage={ titleFoodsNacionalite } />
-        <p>teste</p>
+        <Footer />
       </>
     );
   }

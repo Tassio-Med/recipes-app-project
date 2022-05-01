@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import MyContext from '../context/MyContext';
 import HeaderNoSearch from '../components/HeaderNoSearch';
+import Footer from '../components/Footer';
 
 class Profile extends React.Component {
   constructor() {
@@ -67,6 +68,7 @@ class Profile extends React.Component {
             </Link>
           </div>
         </main>
+        <Footer />
       </>
     );
   }
