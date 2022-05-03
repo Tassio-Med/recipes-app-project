@@ -36,6 +36,7 @@ class Header extends React.Component {
         <nav className="boxHeader">
           <Link to="/profile">
             <input
+              className="searchProfile"
               type="image"
               alt="Ícone que redireciona para a página de perfil."
               src={ profileIcon }
@@ -43,8 +44,14 @@ class Header extends React.Component {
               // onClick={ this.handleClickProfile }
             />
           </Link>
-          <p data-testid="page-title">{titlePage}</p>
+          <h2
+            className="titlePage"
+            data-testid="page-title"
+          >
+            {titlePage}
+          </h2>
           <input
+            className="searchIcon"
             type="image"
             src={ searchIcon }
             alt="Ícone que habilita a pesquisa na página."

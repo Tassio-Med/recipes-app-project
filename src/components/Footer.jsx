@@ -11,6 +11,7 @@ class Footer extends React.Component {
       <footer data-testid="footer" className="boxFooter">
         <Link to="/drinks">
           <img
+            className="drinksIcon"
             data-testid="drinks-bottom-btn"
             src={ drinkIcon }
             alt="Ícone que redireciona para página Drinks"
@@ -18,6 +19,7 @@ class Footer extends React.Component {
         </Link>
         <Link to="/explore">
           <img
+            className="exploreIcon"
             data-testid="explore-bottom-btn"
             src={ exploreIcon }
             alt="Ícone que redireciona para página Explore"
@@ -25,7 +27,9 @@ class Footer extends React.Component {
         </Link>
 
         <Link to="/foods">
-          <img
+          <input
+            type="image"
+            className="foodsIcon"
             data-testid="food-bottom-btn"
             src={ mealIcon }
             alt="Ícone que redireciona para página Foods"
