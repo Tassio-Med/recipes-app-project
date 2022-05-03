@@ -45,6 +45,27 @@ class FoodsDetails extends React.Component {
     const keyUrlYoutube = objRecipeFood.strYoutube?.split('=')[1];
     // const teste = keyUrlYoutube?.split('=')[1];
 
+    // number index vai de 1 a 15;
+    const arrayIngredients = [];
+    const arrayMeasures = [];
+    const FIFTEEN = 15;
+
+    for (let index = 1; index <= FIFTEEN; index += 1) {
+      const strIngredient = `strIngredient${index}`;
+      if ((objRecipeFood)[strIngredient] !== null) {
+        arrayIngredients.push(objRecipeFood[strIngredient]);
+        arrayMeasures.push(objRecipeFood[`strMeasure${index}`]);
+      }
+    }
+
+    // console.log(arrayIngredients, arrayMeasures);
+
+    const arrayIngredientAndMeasure = arrayIngredients
+      .map((item, index) => (arrayMeasures[index] !== undefined
+        ? `${item} - ${arrayMeasures[index]}` : item));
+
+    // console.log(arrayIngredientAndMeasure);
+
     const SIX = 6;
 
     return (
@@ -88,9 +109,18 @@ class FoodsDetails extends React.Component {
           className="boxIngredients"
         >
           <h4>Ingredientes</h4>
-          <p data-testid="0-ingredient-name-and-measure">
-            Lista de Ingredientes
-          </p>
+          <div>
+            {
+              arrayIngredientAndMeasure.map((ingredientAndMeasure, index) => (
+                <p
+                  data-testid={ `${index}-ingredient-name-and-measure` }
+                  key={ ingredientAndMeasure }
+                >
+                  {ingredientAndMeasure}
+                </p>
+              ))
+            }
+          </div>
         </section>
         <section
           className="boxInstructions"
@@ -116,14 +146,18 @@ class FoodsDetails extends React.Component {
           className="boxRecomendations"
         >
           <h4>Recommended</h4>
-          <div data-testid="0-recomendation-card">
+          <div
+            data-testid="0-recomendation-card"
+            className="boxRecommendation"
+          >
             { objRecipeDrinks && objRecipeDrinks.map((drinkRecipe, index) => (
               <CardRecipeDrinks
+                data-testid={ `${index}-recomendation-card` }
                 dataTestINDEX={ index }
-                source={ drinkRecipe.strMealThumb }
-                recipeCardName={ drinkRecipe.strMeal }
-                key={ drinkRecipe.idMeal }
-                idRecipe={ drinkRecipe.idMeal }
+                source={ drinkRecipe.strDrinkThumb }
+                recipeCardName={ drinkRecipe.strDrink }
+                key={ drinkRecipe.idDrink }
+                idRecipe={ drinkRecipe.idDrink }
               />
             )).slice(0, SIX)}
           </div>

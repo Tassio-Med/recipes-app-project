@@ -40,7 +40,28 @@ class DrinkDetails extends React.Component {
 
   render() {
     const { objRecipeDrink, objRecipeFoods } = this.state;
-    console.log(objRecipeDrink);
+    // console.log(Object.entries(objRecipeDrink));
+
+    // number index vai de 1 a 15;
+    const arrayIngredients = [];
+    const arrayMeasures = [];
+    const FIFTEEN = 15;
+
+    for (let index = 1; index <= FIFTEEN; index += 1) {
+      const strIngredient = `strIngredient${index}`;
+      if ((objRecipeDrink)[strIngredient] !== null) {
+        arrayIngredients.push(objRecipeDrink[strIngredient]);
+        arrayMeasures.push(objRecipeDrink[`strMeasure${index}`]);
+      }
+    }
+
+    // console.log(arrayIngredients, arrayMeasures);
+
+    const arrayIngredientAndMeasure = arrayIngredients
+      .map((item, index) => (arrayMeasures[index] !== undefined
+        ? `${item} - ${arrayMeasures[index]}` : item));
+
+    // console.log(arrayIngredientAndMeasure);
 
     const SIX = 6;
 
@@ -85,9 +106,18 @@ class DrinkDetails extends React.Component {
           className="boxIngredients"
         >
           <h4>Ingredientes</h4>
-          <p data-testid="0-ingredient-name-and-measure">
-            Lista de Ingredientes
-          </p>
+          <div>
+            {
+              arrayIngredientAndMeasure.map((ingredientAndMeasure, index) => (
+                <p
+                  data-testid={ `${index}-ingredient-name-and-measure` }
+                  key={ index }
+                >
+                  {ingredientAndMeasure}
+                </p>
+              ))
+            }
+          </div>
         </section>
         <section
           className="boxInstructions"
@@ -104,6 +134,7 @@ class DrinkDetails extends React.Component {
           <div data-testid="0-recomendation-card">
             { objRecipeFoods && objRecipeFoods.map((foodRecipe, index) => (
               <CardRecipeFoods
+                data-testid={ `${index}-recomendation-card` }
                 dataTestINDEX={ index }
                 source={ foodRecipe.strMealThumb }
                 recipeCardName={ foodRecipe.strMeal }
