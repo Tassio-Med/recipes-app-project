@@ -168,10 +168,9 @@ class MyProvider extends React.Component {
   handleUserEmail = () => {
     const userLocalStorage = localStorage.getItem('user');
     const userEmail = JSON.parse(userLocalStorage);
-    // console.log(userEmail.email);
 
     this.setState({
-      userEmail: userEmail.email,
+      userEmail,
     });
   }
 

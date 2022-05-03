@@ -1,47 +1,49 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import MyContext from '../context/MyContext';
-// import { fetchByCategory } from '../services/apiServicesFoods';
+import './BoxFilters.css';
 
-class FiltersCategory extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      // category: '',
-    };
-  }
-
+class FiltersCategoryFood extends React.Component {
   componentDidMount() {
     const { handleCategoryListFood } = this.context;
     handleCategoryListFood();
   }
 
-  filterByCategory = async () => {
-    const urlName = 'www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata';
-    const response = await fetch(urlName);
-    const data = await response.json();
+  handleClickBtnCategory = (event) => {
+    const btnName = event.target.innerHTML;
 
-    // this.setState({
-    //   category: data.meals,
-    // });
-    console.log(data);
+    this.handleCallFilterByCategory(btnName);
+  }
+
+  handleCallFilterByCategory = (btnName) => {
+    const { filterByCategory } = this.props;
+
+    return filterByCategory(btnName);
   }
 
   render() {
     const { categoryListFood } = this.context;
-    // const { category } = this.state;
+
     const FIVE = 5;
 
-    // console.log(category);
     return (
-      <section id="boxFilters">
-        <button type="button">All</button>
+      <section className="boxFilters">
+        <button
+          type="button"
+          className="btnCategory"
+          onClick={ this.handleClickBtnCategory }
+          data-testid="All-category-filter"
+        >
+          All
+        </button>
         {
           categoryListFood && categoryListFood.map((item) => (
             <button
+              className="btnCategory"
               key={ item.strCategory }
               type="button"
               data-testid={ `${item.strCategory}-category-filter` }
-              onClick={ this.filterByCategory }
+              onClick={ this.handleClickBtnCategory }
             >
               {item.strCategory}
             </button>
@@ -52,6 +54,10 @@ class FiltersCategory extends React.Component {
   }
 }
 
-FiltersCategory.contextType = MyContext;
+FiltersCategoryFood.propTypes = {
+  filterByCategory: PropTypes.func.isRequired,
+};
 
-export default FiltersCategory;
+FiltersCategoryFood.contextType = MyContext;
+
+export default FiltersCategoryFood;

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import Header from '../components/Header';
 import MyContext from '../context/MyContext';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CardRecipeDrinks from '../components/CardRecipeDrinks';
 import '../components/CardRecipes.css';
@@ -13,6 +13,9 @@ class Drinks extends React.Component {
     super();
     this.state = {
       titleDrinks: '',
+      categoryRecipes: '',
+      btnCategoryIsON: false,
+      updateBtnName: '',
     };
   }
 
@@ -35,8 +38,47 @@ class Drinks extends React.Component {
     handleDefaultDataDrink();
   };
 
+  filterByCategory = async (btnName) => {
+    const { btnCategoryIsON, updateBtnName } = this.state;
+
+    if (btnName === 'All' && btnName !== updateBtnName) {
+      const urlName = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+      const response = await fetch(urlName);
+      const data = await response.json();
+
+      this.setState({
+        categoryRecipes: data.drinks,
+        btnCategoryIsON: false,
+      });
+    }
+
+    if (btnName !== 'All') {
+      if (btnCategoryIsON === true && updateBtnName === btnName) {
+        const urlName = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+        const response = await fetch(urlName);
+        const data = await response.json();
+
+        this.setState({
+          categoryRecipes: data.drinks,
+          btnCategoryIsON: false,
+          updateBtnName: '',
+        });
+      } else {
+        const urlName = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${btnName}`;
+        const response = await fetch(urlName);
+        const data = await response.json();
+
+        this.setState({
+          categoryRecipes: data.drinks,
+          btnCategoryIsON: true,
+          updateBtnName: btnName,
+        });
+      }
+    }
+  }
+
   render() {
-    const { titleDrinks } = this.state;
+    const { titleDrinks, categoryRecipes } = this.state;
     const { pathRec, dataName, searchValue, searchOn, defaultDataDrink } = this.context;
 
     const TWELVE = 12;
@@ -56,10 +98,14 @@ class Drinks extends React.Component {
       </section>
     );
 
+    const comparCategory = (categoryRecipes === null
+      || categoryRecipes.length === 0)
+      ? defaultDataDrink.drinks : categoryRecipes;
+
     const defaultCardsDrinks = (
       <section className="boxCards">
         {
-          defaultDataDrink && defaultDataDrink.drinks?.map((item, index) => (
+          comparCategory?.map((item, index) => (
             <CardRecipeDrinks
               dataTestINDEX={ index }
               source={ item.strDrinkThumb }
@@ -82,7 +128,7 @@ class Drinks extends React.Component {
         { (dataName.drinks === null && searchValue !== '')
           && global.alert(alertNoRecipes) }
 
-        <FiltersCategoryDrink />
+        <FiltersCategoryDrink filterByCategory={ this.filterByCategory } />
 
         <section className="boxRecipes">
           { comparSearchON }

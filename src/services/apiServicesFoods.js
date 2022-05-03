@@ -45,11 +45,3 @@ export const fetchCategoryListFood = async () => {
   // console.log('list', data);
   return data;
 };
-
-// export const fetchByCategory = async (btnName) => {
-//   const urlName = `www.themealdb.com/api/json/v1/1/filter.php?c=${btnName}`;
-//   const response = await fetch(urlName);
-//   const data = await response.json();
-//   // console.log('list', data);
-//   return data;
-// };

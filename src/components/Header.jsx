@@ -22,6 +22,10 @@ class Header extends React.Component {
     }));
   };
 
+  // handleClickProfile = () => {
+  //   const userLocalStorage = JSON.parse(localStorage.getItem('user'));
+  // }
+
   render() {
     const { titlePage } = this.props;
     const { showSearchBar } = this.state;
@@ -31,10 +35,12 @@ class Header extends React.Component {
       <>
         <nav className="boxHeader">
           <Link to="/profile">
-            <img
+            <input
+              type="image"
               alt="Ícone que redireciona para a página de perfil."
               src={ profileIcon }
               data-testid="profile-top-btn"
+              // onClick={ this.handleClickProfile }
             />
           </Link>
           <p data-testid="page-title">{titlePage}</p>

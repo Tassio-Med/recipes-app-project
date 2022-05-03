@@ -5,18 +5,38 @@ import MyContext from '../context/MyContext';
 import HeaderNoSearch from '../components/HeaderNoSearch';
 import Footer from '../components/Footer';
 
+const defaultEmail = { email: 'email@mail.com' };
+
 class Profile extends React.Component {
   constructor() {
     super();
     this.state = {
       titleProfile: '',
+      email: '',
     };
   }
 
   componentDidMount() {
+    // this.setDefaultProfile();
     this.handlePageName();
-    // const { handleUserEmail } = this.context;
-    // handleUserEmail();
+  }
+
+  setDefaultProfile = () => {
+    const userLocalStorage = JSON.parse(localStorage.getItem('user'));
+    const { emailInput } = this.context;
+
+    if (emailInput === '') {
+      localStorage.setItem('user', JSON.stringify(defaultEmail));
+
+      this.setState({
+        email: userLocalStorage.email,
+      });
+    }
+    if (userLocalStorage.email !== defaultEmail.email) {
+      this.setState({
+        email: userLocalStorage.email,
+      });
+    }
   }
 
   handlePageName = () => {
@@ -33,19 +53,19 @@ class Profile extends React.Component {
   };
 
   clearLocalStorage = () => {
-    localStorage.clear();
+    localStorage.clear('user');
+    localStorage.setItem('user', JSON.stringify(defaultEmail));
   };
 
   render() {
-    const { titleProfile } = this.state;
-    // const { userEmail } = this.context;
+    const { titleProfile, email } = this.state;
 
     return (
       <>
         <HeaderNoSearch titlePage={ titleProfile } />
         <main>
           <div className="boxProfile">
-            {/* <p data-testid="profile-email">{ userEmail }</p> */}
+            <p data-testid="profile-email">{ email }</p>
             <br />
             <Link to="/done-recipes">
               <button type="button" data-testid="profile-done-btn">
