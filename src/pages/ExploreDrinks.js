@@ -6,7 +6,6 @@ import HeaderNoSearch from '../components/HeaderNoSearch';
 import { fetchAPIRandomDrink } from '../services/apiServicesDrinks';
 import Footer from '../components/Footer';
 
-
 class ExploreDrinks extends React.Component {
   constructor() {
     super();

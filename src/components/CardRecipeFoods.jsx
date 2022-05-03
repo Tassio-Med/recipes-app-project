@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import './CardRecipes.css';
 
 class CardRecipeFoods extends React.Component {
   render() {
