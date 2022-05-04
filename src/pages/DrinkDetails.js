@@ -3,7 +3,8 @@ import React from 'react';
 import MyContext from '../context/MyContext';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import CardRecipeFoods from '../components/CardRecipeFoods';
+import './Recomendation.css';
+import './DrinkDetails.css';
 
 class DrinkDetails extends React.Component {
   constructor() {
@@ -67,49 +68,55 @@ class DrinkDetails extends React.Component {
 
     return (
       <>
-        <header className="headerDetails">
+        <header className="headerDetailsDrink">
           <img
-            className="imgRecipeDetail"
+            className="imgRecipeDetailDrink"
             data-testid="recipe-photo"
             src={ objRecipeDrink.strDrinkThumb }
             alt="Imagem da receita"
           />
-          <h3
-            data-testid="recipe-title"
-          >
-            { objRecipeDrink.strDrink }
-          </h3>
-          <input
-            type="image"
-            className="shareIcon"
-            data-testid="share-btn"
-            src={ shareIcon }
-            alt="Ícone que para compartilhar a receita"
-            onClick={ this.handleShareRecipe }
-          />
-          <input
-            type="image"
-            className="favoriteIcon"
-            data-testid="favorite-btn"
-            src={ whiteHeartIcon }
-            alt="Ícone que para favoritar a receita"
-            onClick={ this.handleFavoriteRecipe }
-          />
-          <p
-            data-testid="recipe-category"
-            className="categoryRecipe"
-          >
-            { objRecipeDrink.strAlcoholic }
-          </p>
+          <section className="subBoxHeader">
+            <div className="boxTitlesDrink">
+              <h2
+                className="titleDetailDrink"
+                data-testid="recipe-title"
+              >
+                { objRecipeDrink.strDrink }
+              </h2>
+              <h3
+                data-testid="recipe-category"
+                className="categoryRecipeDrink"
+              >
+                { objRecipeDrink.strAlcoholic }
+              </h3>
+            </div>
+            <div className="boxMediaIcons">
+              <input
+                type="image"
+                className="shareIconDrink"
+                data-testid="share-btn"
+                src={ shareIcon }
+                alt="Ícone que para compartilhar a receita"
+                onClick={ this.handleShareRecipe }
+              />
+              <input
+                type="image"
+                className="favoriteIconDrink"
+                data-testid="favorite-btn"
+                src={ whiteHeartIcon }
+                alt="Ícone que para favoritar a receita"
+                onClick={ this.handleFavoriteRecipe }
+              />
+            </div>
+          </section>
         </header>
-        <section
-          className="boxIngredients"
-        >
-          <h4>Ingredientes</h4>
-          <div>
+        <section className="boxIngredientsDrink">
+          <h3 className="titleIngredientsDrink">Ingredientes</h3>
+          <div className="boxListIngredientsDrink">
             {
               arrayIngredientAndMeasure.map((ingredientAndMeasure, index) => (
                 <p
+                  className="ingredientLineDrink"
                   data-testid={ `${index}-ingredient-name-and-measure` }
                   key={ index }
                 >
@@ -119,34 +126,40 @@ class DrinkDetails extends React.Component {
             }
           </div>
         </section>
-        <section
-          className="boxInstructions"
-        >
-          <h4>Instruções</h4>
-          <p data-testid="instructions">
+        <section className="boxInstructions">
+          <h3 className="titleBoxInstructions">Instruções</h3>
+          <p data-testid="instructions" className="textOfInstructions">
             { objRecipeDrink.strInstructions }
           </p>
         </section>
-        <section
-          className="boxRecomendations"
-        >
-          <h4>Recommended</h4>
-          <div data-testid="0-recomendation-card">
+        <section className="boxRecomendations">
+          <h3 className="titleRecomendationFood">Recomendation</h3>
+          <section className="boxRecomendation">
             { objRecipeFoods && objRecipeFoods.map((foodRecipe, index) => (
-              <CardRecipeFoods
+              <span
                 data-testid={ `${index}-recomendation-card` }
-                dataTestINDEX={ index }
-                source={ foodRecipe.strMealThumb }
-                recipeCardName={ foodRecipe.strMeal }
-                key={ foodRecipe.idMeal }
-                idRecipe={ foodRecipe.idMeal }
-              />
+                key={ index }
+              >
+                <input
+                  className="imgRecipeDetailRec"
+                  src={ foodRecipe.strMealThumb }
+                  type="image"
+                  alt="Imagem da bebida recomendada"
+                />
+                <p>
+                  { foodRecipe.strCategory}
+                </p>
+                <h5 data-testid={ `${index}-recomendation-title` }>
+                  { foodRecipe.strMeal }
+                </h5>
+              </span>
             )).slice(0, SIX)}
-          </div>
+          </section>
         </section>
         <button
           type="button"
           data-testid="start-recipe-btn"
+          className="btnInitRecipeDrink"
         >
           Start Recipe
         </button>

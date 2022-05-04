@@ -1,4 +1,77 @@
-.imgRecipeDetail {
-  height: 50px;
+.imgRecipeDetailDrink {
+  height: 250px;
+  width: 360px;
+}
+
+.subBoxHeader {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.boxTitlesDrink {
+  display: flex;
+  flex-flow: row wrap;
+  width: 70%;
+}
+
+.titleDetailDrink {
+  margin-bottom: 3px;
+  margin-left: 10px;
+  width: 100%;
+}
+
+.categoryRecipeDrink {
+  margin-left: 10px;
+}
+
+.boxMediaIcons {
+  display: flex;
+  justify-content: space-around;
   width: 100px;
+}
+
+.shareIconDrink {
+  width: 30px;
+}
+
+.favoriteIconDrink {
+  width: 30px;
+}
+
+.boxIngredientsDrink {
+  margin-left: 10px;
+}
+
+/* .titleIngredientsDrink {} */
+.boxListIngredientsDrink {
+  margin-left: 10px;
+}
+
+/* .ingredientLineDrink {} */
+.boxInstructions {
+  margin-left: 10px;
+}
+
+/* .titleBoxInstructions {} */
+
+/* .textOfInstructions {} */
+.boxRecomendations {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleRecomendationFood {
+  align-self: start;
+  display: flex;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.btnInitRecipeDrink {
+  bottom: 0;
+  position: fixed;
 }

@@ -3,7 +3,7 @@ import React from 'react';
 import MyContext from '../context/MyContext';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import CardRecipeDrinks from '../components/CardRecipeDrinks';
+import './Recomendation.css';
 import './FoodDetails.css';
 
 class FoodsDetails extends React.Component {
@@ -70,49 +70,55 @@ class FoodsDetails extends React.Component {
 
     return (
       <>
-        <header className="headerDetails">
+        <header className="headerDetailsFood">
           <img
-            className="imgRecipeDetail"
+            className="imgRecipeDetailFood"
             data-testid="recipe-photo"
             src={ objRecipeFood.strMealThumb }
             alt="Imagem da receita"
           />
-          <h3
-            data-testid="recipe-title"
-          >
-            { objRecipeFood.strMeal }
-          </h3>
-          <input
-            type="image"
-            className="shareIcon"
-            data-testid="share-btn"
-            src={ shareIcon }
-            alt="Ícone que para compartilhar a receita"
-            onClick={ this.handleShareRecipe }
-          />
-          <input
-            type="image"
-            className="favoriteIcon"
-            data-testid="favorite-btn"
-            src={ whiteHeartIcon }
-            alt="Ícone que para favoritar a receita"
-            onClick={ this.handleFavoriteRecipe }
-          />
-          <p
-            data-testid="recipe-category"
-            className="categoryRecipe"
-          >
-            { objRecipeFood.strCategory }
-          </p>
+          <section className="subBoxHeader">
+            <div className="boxTitlesFoods">
+              <h2
+                className="titleDetailFood"
+                data-testid="recipe-title"
+              >
+                { objRecipeFood.strMeal }
+              </h2>
+              <h3
+                data-testid="recipe-category"
+                className="categoryRecipeFood"
+              >
+                { objRecipeFood.strCategory }
+              </h3>
+            </div>
+            <div className="boxMediaIcons">
+              <input
+                type="image"
+                className="shareIconFood"
+                data-testid="share-btn"
+                src={ shareIcon }
+                alt="Ícone que para compartilhar a receita"
+                onClick={ this.handleShareRecipe }
+              />
+              <input
+                type="image"
+                className="favoriteIconFood"
+                data-testid="favorite-btn"
+                src={ whiteHeartIcon }
+                alt="Ícone que para favoritar a receita"
+                onClick={ this.handleFavoriteRecipe }
+              />
+            </div>
+          </section>
         </header>
-        <section
-          className="boxIngredients"
-        >
-          <h4>Ingredientes</h4>
-          <div>
+        <section className="boxIngredientsFood">
+          <h3 className="titleIngredientsFood">Ingredientes</h3>
+          <div className="boxListIngredientsFood">
             {
               arrayIngredientAndMeasure.map((ingredientAndMeasure, index) => (
                 <p
+                  className="ingredientLineFood"
                   data-testid={ `${index}-ingredient-name-and-measure` }
                   key={ ingredientAndMeasure }
                 >
@@ -122,49 +128,52 @@ class FoodsDetails extends React.Component {
             }
           </div>
         </section>
-        <section
-          className="boxInstructions"
-        >
-          <h4>Instruções</h4>
-          <p data-testid="instructions">
+        <section className="boxInstructions">
+          <h3 className="titleBoxInstructions">Instruções</h3>
+          <p data-testid="instructions" className="textOfInstructions">
             { objRecipeFood.strInstructions }
           </p>
         </section>
         <section
           className="boxVideo"
         >
-          <h4>Video</h4>
+          <h3 className="titleBoxVideo">Video</h3>
           <iframe
             data-testid="video"
             src={ `https://www.youtube.com/embed/${keyUrlYoutube}` }
-            width="320"
-            height="290"
+            width="340"
+            height="320"
             title="YouTube video player"
           />
         </section>
-        <section
-          className="boxRecomendations"
-        >
-          <h4>Recommended</h4>
-          <div
-            data-testid="0-recomendation-card"
-            className="boxRecommendation"
-          >
+        <section className="boxRecomendations">
+          <h3 className="titleRecomendationDrink">Recomendation</h3>
+          <section className="boxRecomendation">
             { objRecipeDrinks && objRecipeDrinks.map((drinkRecipe, index) => (
-              <CardRecipeDrinks
+              <span
                 data-testid={ `${index}-recomendation-card` }
-                dataTestINDEX={ index }
-                source={ drinkRecipe.strDrinkThumb }
-                recipeCardName={ drinkRecipe.strDrink }
-                key={ drinkRecipe.idDrink }
-                idRecipe={ drinkRecipe.idDrink }
-              />
+                key={ index }
+              >
+                <input
+                  className="imgRecipeDetailRec"
+                  src={ drinkRecipe.strDrinkThumb }
+                  type="image"
+                  alt="Imagem da bebida recomendada"
+                />
+                <p>
+                  { drinkRecipe.strAlcoholic}
+                </p>
+                <h5 data-testid={ `${index}-recomendation-title` }>
+                  { drinkRecipe.strDrink }
+                </h5>
+              </span>
             )).slice(0, SIX)}
-          </div>
+          </section>
         </section>
         <button
           type="button"
           data-testid="start-recipe-btn"
+          className="btnInitRecipeFood"
         >
           Start Recipe
         </button>
