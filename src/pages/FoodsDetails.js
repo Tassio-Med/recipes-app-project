@@ -120,7 +120,7 @@ class FoodsDetails extends React.Component {
                 <p
                   className="ingredientLineFood"
                   data-testid={ `${index}-ingredient-name-and-measure` }
-                  key={ ingredientAndMeasure }
+                  key={ index }
                 >
                   {ingredientAndMeasure}
                 </p>
