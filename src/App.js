@@ -26,12 +26,12 @@ class App extends React.Component {
         <Switch>
           <Route
             exact
-            path="/foods/{id-da-receita}/in-progress"
+            path="/foods/:idFoodRecipe/in-progress"
             component={ FoodsDetailsProgress }
           />
           <Route
             exact
-            path=" /drinks/{id-da-receita}/in-progress"
+            path=" /drinks/:IdDrinkRecipe/in-progress"
             component={ DrinkDetailsProgress }
           />
           <Route exact path="/foods/:idFood" component={ FoodsDetails } />

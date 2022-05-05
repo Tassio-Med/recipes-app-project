@@ -1,6 +1,6 @@
 .imgRecipeDetailFood {
   height: 250px;
-  width: 360px;
+  width: 100%;
 }
 
 .subBoxHeader {
@@ -42,6 +42,7 @@
 
 .boxIngredientsFood {
   margin-left: 10px;
+  width: 95%;
 }
 
 /* .titleIngredientsFood {} */
@@ -52,11 +53,14 @@
 /* .ingredientLineFood {} */
 .boxInstructions {
   margin-left: 10px;
+  width: 95%;
+
 }
 
 /* .titleBoxInstructions {} */
-
-/* .boxVideo {} */
+.boxVideo {
+  width: 100%;
+}
 
 /* .titleBoxVideo {} */
 
@@ -65,6 +69,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  width: 360px;
 }
 
 .titleRecomendationDrink {
@@ -84,11 +89,11 @@
   color: black;
   font-size: 15px;
   font-weight: 900;
-  height: 35px;
-  margin-left: 10%;
-  margin-top: 605px;
+  height: 30px;
+  margin-left: 15%;
+  margin-top: 610px;
   position: fixed;
-  width: 80%;
+  width: 70%;
 }
 
 .btnInitRecipeFood:hover {
@@ -105,5 +110,11 @@
   margin-left: 10%;
   margin-top: 605px;
   position: fixed;
-  width: 80%;
+  width: 250px;
 }
+
+/* .boxMsgFinished {} */
+
+/* .msgRecipeFinished {} */
+
+/* .btnDoItAgain {} */

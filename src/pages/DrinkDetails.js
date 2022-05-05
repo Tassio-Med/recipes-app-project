@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import MyContext from '../context/MyContext';
+import { Link } from 'react-router-dom';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import './Recomendation.css';
@@ -10,8 +10,12 @@ class DrinkDetails extends React.Component {
   constructor() {
     super();
     this.state = {
+      idDrinkRecipe: '',
       objRecipeDrink: '',
       objRecipeFoods: '',
+      btnStartIsOn: true,
+      recipeIsDone: false,
+      progressRepiceIsOn: false,
     };
   }
 
@@ -20,6 +24,7 @@ class DrinkDetails extends React.Component {
     const idDrinkRecipe = params.idDrink;
 
     this.fetchRecipeById(idDrinkRecipe);
+    this.handleStorageDoneRecipes(idDrinkRecipe);
   }
 
   fetchRecipeById = async (idDrinkRecipe) => {
@@ -36,18 +41,51 @@ class DrinkDetails extends React.Component {
     this.setState({
       objRecipeDrink,
       objRecipeFoods,
+      idDrinkRecipe,
     });
   }
 
-  render() {
-    const { objRecipeDrink, objRecipeFoods } = this.state;
-    // console.log(Object.entries(objRecipeDrink));
+  handleStorageDoneRecipes = (idDrinkRecipe) => {
+    const storageDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    const storageInProgressRecipes = JSON.parse(localStorage
+      .getItem('inProgressRecipes'));
 
-    // number index vai de 1 a 15;
+    if (storageInProgressRecipes !== null) {
+      const arrayDrinksInProgress = Array.from(Object.keys(
+        storageInProgressRecipes.cocktails,
+      ));
+
+      const filterInProgressRecipes = arrayDrinksInProgress?.some(
+        (progressRecipes) => progressRecipes.includes(idDrinkRecipe),
+      );
+      if (filterInProgressRecipes) {
+        this.setState({
+          progressRepiceIsOn: true,
+          btnStartIsOn: false,
+        });
+      }
+    }
+
+    if (storageDoneRecipes !== null) {
+      const filterDoneRecipes = storageDoneRecipes?.map((recipeDone) => recipeDone
+        .id.includes(idDrinkRecipe));
+
+      if (filterDoneRecipes) {
+        this.setState({
+          recipeIsDone: true,
+          btnStartIsOn: false,
+        });
+      }
+      // console.log(filterDoneRecipes);
+    }
+  }
+
+  render() {
+    const { objRecipeDrink, objRecipeFoods, recipeIsDone,
+      progressRepiceIsOn, btnStartIsOn, idDrinkRecipe } = this.state;
     const arrayIngredients = [];
     const arrayMeasures = [];
     const FIFTEEN = 15;
-
     for (let index = 1; index <= FIFTEEN; index += 1) {
       const strIngredient = `strIngredient${index}`;
       if ((objRecipeDrink)[strIngredient] !== null) {
@@ -55,16 +93,48 @@ class DrinkDetails extends React.Component {
         arrayMeasures.push(objRecipeDrink[`strMeasure${index}`]);
       }
     }
-
-    // console.log(arrayIngredients, arrayMeasures);
-
     const arrayIngredientAndMeasure = arrayIngredients
       .map((item, index) => (arrayMeasures[index] !== undefined
         ? `${item} - ${arrayMeasures[index]}` : item));
-
-    // console.log(arrayIngredientAndMeasure);
-
     const SIX = 6;
+    const msgRecipeFinished = (
+      <section className="boxMsgFinished">
+        <h4 className="msgRecipeFinished">
+          Recipe is Finished
+        </h4>
+        <button
+          className="btnDoItAgain"
+          type="button"
+        >
+          Do it again!?
+        </button>
+      </section>
+    );
+    const btnStart = (
+      <Link to={ `/drinks/${idDrinkRecipe}/in-progress` }>
+        <button
+          type="button"
+          data-testid="start-recipe-btn"
+          className="btnInitRecipeFood"
+        >
+          Start Recipe
+        </button>
+      </Link>
+    );
+    const btnContinueRecipe = (
+      <button
+        type="button"
+        data-testid="start-recipe-btn"
+        className="btnInitRecipeFood"
+      >
+        Continue Recipe
+      </button>
+    );
+    const comparContinueRecipe = (!btnStartIsOn && !recipeIsDone && progressRepiceIsOn)
+      ? btnContinueRecipe : btnStart;
+
+    const conditinalBtnStartFinish = (!btnStartIsOn
+      && !progressRepiceIsOn && recipeIsDone) ? msgRecipeFinished : comparContinueRecipe;
 
     return (
       <>
@@ -156,22 +226,13 @@ class DrinkDetails extends React.Component {
             )).slice(0, SIX)}
           </section>
         </section>
-        <button
-          type="button"
-          data-testid="start-recipe-btn"
-          className="btnInitRecipeDrink"
-        >
-          Start Recipe
-        </button>
+        { conditinalBtnStartFinish }
       </>
     );
   }
 }
 
-DrinkDetails.contextType = MyContext;
-
 DrinkDetails.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
-
 export default DrinkDetails;

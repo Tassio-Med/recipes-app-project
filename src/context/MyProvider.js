@@ -186,15 +186,11 @@ class MyProvider extends React.Component {
 
   validatedLogin = () => {
     const { emailInput, passwordInput } = this.state;
-
     const regexEmail = /^[^@]+@[^@]+\.[^@]+$/i;
     const validEmail = regexEmail.test(emailInput);
-
     const SIX = 6;
     const validPassWord = passwordInput.length > SIX;
-
     const validLogin = validEmail && validPassWord;
-    // console.log(validEmail, validPassWord);
 
     if (validLogin) {
       this.setState({
@@ -209,7 +205,6 @@ class MyProvider extends React.Component {
 
   handleBtnLogin = () => {
     const { emailInput } = this.state;
-
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
     localStorage.setItem('user', JSON.stringify({ email: emailInput }));
@@ -239,9 +234,7 @@ class MyProvider extends React.Component {
     );
   }
 }
-
 MyProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
 export default MyProvider;
