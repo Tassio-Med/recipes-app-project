@@ -8,11 +8,11 @@ import './FoodDetails.css';
 import { fetchIdFoodRecipe, fetchDrinksRecipes } from '../services/apiServicesFoods';
 import HeaderDetailsFood from '../components/HeaderDetailsFood';
 import BoxIngredientsFood from '../components/BoxIngredientsFood';
-import MsgRecipeFiniched from '../components/MsgRecipeFinished';
-import BtnContinueRecipe from '../components/BtnContinueRecipe';
-import BtnStartRecipe from '../components/BtnStartRecipe';
-import BoxInstructionsFood from '../components/BoxInstructions';
+import BoxInstructionsFood from '../components/BoxInstructionsFood';
 import BoxVideoRecipe from '../components/BoxVideoRecipe';
+import MsgRecipeFoodFinished from '../components/MsgRecipeFoodFinished';
+import BtnContinueFoodRecipe from '../components/BtnContinueFoodRecipe';
+import BtnStartFoodRecipe from '../components/BtnStartFoodRecipe';
 import BoxRecomendationsDrinks from '../components/BoxRecomendationsDrinks';
 
 class FoodsDetails extends React.Component {
@@ -85,12 +85,12 @@ class FoodsDetails extends React.Component {
       progressRepiceIsOn, btnStartIsOn, idFoodRecipe } = this.state;
 
     const comparContinueRecipe = (!btnStartIsOn && !recipeIsDone && progressRepiceIsOn)
-      ? (<BtnContinueRecipe idFoodRecipe={ idFoodRecipe } />)
-      : (<BtnStartRecipe idFoodRecipe={ idFoodRecipe } />);
+      ? (<BtnContinueFoodRecipe idFoodRecipe={ idFoodRecipe } />)
+      : (<BtnStartFoodRecipe idFoodRecipe={ idFoodRecipe } />);
 
     const conditinalBtnStartFinish = (!btnStartIsOn
       && !progressRepiceIsOn && recipeIsDone)
-      ? (<MsgRecipeFiniched />) : comparContinueRecipe;
+      ? (<MsgRecipeFoodFinished />) : comparContinueRecipe;
 
     return (
       <>
@@ -121,4 +121,5 @@ FoodsDetails.contextType = MyContext;
 FoodsDetails.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
+
 export default FoodsDetails;

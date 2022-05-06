@@ -1,27 +1,28 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../pages/DrinkDetails.css';
 import '../pages/Recomendation.css';
 
-class BtnContinueRecipe extends React.Component {
+class BtnStartDrinkRecipe extends React.Component {
   render() {
-    const { idFoodRecipe } = this.props;
+    const { idDrinkRecipe } = this.props;
     return (
-      <Link to={ `/foods/${idFoodRecipe}/in-progress` }>
+      <Link to={ `/drinks/${idDrinkRecipe}/in-progress` }>
         <button
           type="button"
           data-testid="start-recipe-btn"
           className="btnInitRecipeFood"
         >
-          Continue Recipe
+          Start Recipe
         </button>
       </Link>
     );
   }
 }
 
-BtnContinueRecipe.propTypes = {
-  idFoodRecipe: PropTypes.string.isRequired,
+BtnStartDrinkRecipe.propTypes = {
+  idDrinkRecipe: PropTypes.string.isRequired,
 };
 
-export default BtnContinueRecipe;
+export default BtnStartDrinkRecipe;

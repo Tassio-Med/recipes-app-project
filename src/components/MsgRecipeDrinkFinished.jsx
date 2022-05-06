@@ -1,6 +1,6 @@
 import React from 'react';
 
-class MsgRecipeFiniched extends React.Component {
+class MsgRecipeDrinkFinished extends React.Component {
   render() {
     return (
       <section className="boxMsgFinished">
@@ -18,4 +18,4 @@ class MsgRecipeFiniched extends React.Component {
   }
 }
 
-export default MsgRecipeFiniched;
+export default MsgRecipeDrinkFinished;

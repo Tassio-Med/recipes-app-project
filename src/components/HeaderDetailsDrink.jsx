@@ -1,39 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../pages/FoodDetails.css';
+import '../pages/DrinkDetails.css';
 import '../pages/Recomendation.css';
 
-class HeaderDetailsFood extends React.Component {
+class HeaderDetailsDrink extends React.Component {
   render() {
-    const { shareIcon, whiteHeartIcon, objRecipeFood } = this.props;
+    const { shareIcon, whiteHeartIcon, objRecipeDrink } = this.props;
 
     return (
-      <header className="headerDetailsFood">
+      <header className="headerDetailsDrink">
         <img
-          className="imgRecipeDetailFood"
+          className="imgRecipeDetailDrink"
           data-testid="recipe-photo"
-          src={ objRecipeFood?.strMealThumb }
+          src={ objRecipeDrink.strDrinkThumb }
           alt="Imagem da receita"
         />
         <section className="subBoxHeader">
-          <div className="boxTitlesFood">
+          <div className="boxTitlesDrink">
             <h2
-              className="titleDetailFood"
+              className="titleDetailDrink"
               data-testid="recipe-title"
             >
-              {objRecipeFood?.strMeal}
+              { objRecipeDrink.strDrink }
             </h2>
             <h3
               data-testid="recipe-category"
-              className="categoryRecipeFood"
+              className="categoryRecipeDrink"
             >
-              {objRecipeFood?.strCategory}
+              { objRecipeDrink.strAlcoholic }
             </h3>
           </div>
           <div className="boxMediaIcons">
             <input
               type="image"
-              className="shareIconFood"
+              className="shareIconDrink"
               data-testid="share-btn"
               src={ shareIcon }
               alt="Ícone que para compartilhar a receita"
@@ -41,7 +41,7 @@ class HeaderDetailsFood extends React.Component {
             />
             <input
               type="image"
-              className="favoriteIconFood"
+              className="favoriteIconDrink"
               data-testid="favorite-btn"
               src={ whiteHeartIcon }
               alt="Ícone que para favoritar a receita"
@@ -54,14 +54,14 @@ class HeaderDetailsFood extends React.Component {
   }
 }
 
-HeaderDetailsFood.propTypes = {
-  objRecipeFood: PropTypes.shape({
-    strMealThumb: PropTypes.string,
-    strMeal: PropTypes.string,
-    strCategory: PropTypes.string,
+HeaderDetailsDrink.propTypes = {
+  objRecipeDrink: PropTypes.shape({
+    strDrinkThumb: PropTypes.string,
+    strDrink: PropTypes.string,
+    strAlcoholic: PropTypes.string,
   }).isRequired,
   shareIcon: PropTypes.string.isRequired,
   whiteHeartIcon: PropTypes.string.isRequired,
 };
 
-export default HeaderDetailsFood;
+export default HeaderDetailsDrink;
