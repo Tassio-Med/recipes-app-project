@@ -77,6 +77,20 @@ class Drinks extends React.Component {
     }
   }
 
+  filterArraySearch = () => {
+    const { dataName, dataIngredient, filterRadios, dataFirstLetter } = this.context;
+
+    if (filterRadios === 'firstLetter') {
+      return dataFirstLetter.drinks;
+    }
+    if (filterRadios === 'name') {
+      return dataName.drinks;
+    }
+    if (filterRadios === 'ingredient') {
+      return dataIngredient.drinks;
+    }
+  };
+
   render() {
     const { titleDrinks, categoryRecipes } = this.state;
     const { pathRec, dataName, searchValue, searchOn, defaultDataDrink } = this.context;
@@ -85,7 +99,7 @@ class Drinks extends React.Component {
     const sectionCardsDrinks = (
       <section className="boxCards">
         {
-          dataName.drinks?.map((recipe, index) => (
+          this.filterArraySearch()?.map((recipe, index) => (
             <CardRecipeDrinks
               dataTestINDEX={ index }
               source={ recipe.strDrinkThumb }

@@ -117,8 +117,6 @@ class Foods extends React.Component {
       || categoryRecipes.length === 0)
       ? defaultDataFood.meals : categoryRecipes;
 
-    // console.log(comparCategory);
-
     const defaultCardFood = (
       <section className="boxCards">
         {

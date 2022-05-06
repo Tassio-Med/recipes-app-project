@@ -45,3 +45,20 @@ export const fetchCategoryListDrink = async () => {
   // console.log('list', data);
   return data;
 };
+
+export const fetchIdDrinkRecipe = async (idDrinkRecipe) => {
+  const urlById = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrinkRecipe}`;
+  const response = await fetch(urlById);
+  const data = await response.json();
+  const objRecipeDrink = data.drinks[0];
+  return objRecipeDrink;
+};
+
+// recomendations de Foods para o drink
+export const fetchFoodsRecipes = async () => {
+  const urlFoodsRecipe = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+  const responseFoods = await fetch(urlFoodsRecipe);
+  const dataFoods = await responseFoods.json();
+  const objRecipeFoods = dataFoods.meals;
+  return objRecipeFoods;
+};

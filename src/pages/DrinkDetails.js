@@ -5,6 +5,7 @@ import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import './Recomendation.css';
 import './DrinkDetails.css';
+import { fetchIdDrinkRecipe, fetchFoodsRecipes } from '../services/apiServicesDrinks';
 
 class DrinkDetails extends React.Component {
   constructor() {
@@ -28,15 +29,8 @@ class DrinkDetails extends React.Component {
   }
 
   fetchRecipeById = async (idDrinkRecipe) => {
-    const urlById = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrinkRecipe}`;
-    const response = await fetch(urlById);
-    const data = await response.json();
-    const objRecipeDrink = data.drinks[0];
-
-    const urlFoodsRecipe = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-    const responseFoods = await fetch(urlFoodsRecipe);
-    const dataFoods = await responseFoods.json();
-    const objRecipeFoods = dataFoods.meals;
+    const objRecipeDrink = await fetchIdDrinkRecipe(idDrinkRecipe);
+    const objRecipeFoods = await fetchFoodsRecipes();
 
     this.setState({
       objRecipeDrink,
@@ -210,18 +204,20 @@ class DrinkDetails extends React.Component {
                 data-testid={ `${index}-recomendation-card` }
                 key={ index }
               >
-                <input
-                  className="imgRecipeDetailRec"
-                  src={ foodRecipe.strMealThumb }
-                  type="image"
-                  alt="Imagem da bebida recomendada"
-                />
-                <p>
-                  { foodRecipe.strCategory}
-                </p>
-                <h5 data-testid={ `${index}-recomendation-title` }>
-                  { foodRecipe.strMeal }
-                </h5>
+                <Link to={ `/foods/${foodRecipe.idMeal}` }>
+                  <input
+                    className="imgRecipeDetailRec"
+                    src={ foodRecipe.strMealThumb }
+                    type="image"
+                    alt="Imagem da bebida recomendada"
+                  />
+                  <p>
+                    { foodRecipe.strCategory}
+                  </p>
+                  <h5 data-testid={ `${index}-recomendation-title` }>
+                    { foodRecipe.strMeal }
+                  </h5>
+                </Link>
               </span>
             )).slice(0, SIX)}
           </section>

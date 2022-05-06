@@ -27,10 +27,10 @@ class MyProvider extends React.Component {
       defaultDataDrink: '',
       dataName: '',
       searchValue: '',
-      dataIngredient: '',
-      dataFirstLetter: '',
       filterRadios: '',
       searchOn: false,
+      dataIngredient: '',
+      dataFirstLetter: '',
       userEmail: '',
       pathRec: '',
       categoryListFood: '',
@@ -68,6 +68,14 @@ class MyProvider extends React.Component {
       searchOn: true,
     });
   };
+
+  resetFilters = () => {
+    this.setState({
+      searchValue: '',
+      filterRadios: '',
+      searchOn: false,
+    });
+  }
 
   conditionalSearchFood = () => {
     const { dataName } = this.state;
@@ -227,6 +235,7 @@ class MyProvider extends React.Component {
           handleDefaultDataDrink: this.handleDefaultDataDrink,
           handleCategoryListFood: this.handleCategoryListFood,
           handleCategoryListDrink: this.handleCategoryListDrink,
+          resetFilters: this.resetFilters,
         } }
       >
         {children}
