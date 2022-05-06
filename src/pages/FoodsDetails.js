@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import clipboardCopy from 'clipboard-copy';
 import MyContext from '../context/MyContext';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
@@ -25,6 +26,7 @@ class FoodsDetails extends React.Component {
       btnStartIsOn: true,
       recipeIsDone: false,
       progressRepiceIsOn: false,
+      linkCopy: false,
     };
   }
 
@@ -80,9 +82,24 @@ class FoodsDetails extends React.Component {
     }
   };
 
+  handleShareRecipe = () => {
+    const { match } = this.props;
+    const urlRecipeFood = match.url;
+
+    const urlBase = `http://localhost:3000${urlRecipeFood}`;
+
+    const copyUrlRecipe = clipboardCopy(urlBase);
+
+    if (copyUrlRecipe) {
+      this.setState({
+        linkCopy: true,
+      });
+    }
+  }
+
   render() {
     const { objRecipeFood, objRecipeDrinks, recipeIsDone,
-      progressRepiceIsOn, btnStartIsOn, idFoodRecipe } = this.state;
+      progressRepiceIsOn, btnStartIsOn, idFoodRecipe, linkCopy } = this.state;
 
     const comparContinueRecipe = (!btnStartIsOn && !recipeIsDone && progressRepiceIsOn)
       ? (<BtnContinueFoodRecipe idFoodRecipe={ idFoodRecipe } />)
@@ -98,6 +115,8 @@ class FoodsDetails extends React.Component {
           shareIcon={ shareIcon }
           whiteHeartIcon={ whiteHeartIcon }
           objRecipeFood={ objRecipeFood }
+          handleShareRecipe={ this.handleShareRecipe }
+          linkCopy={ linkCopy }
         />
 
         <BoxIngredientsFood

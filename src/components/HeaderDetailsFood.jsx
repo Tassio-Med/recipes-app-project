@@ -4,8 +4,16 @@ import '../pages/FoodDetails.css';
 import '../pages/Recomendation.css';
 
 class HeaderDetailsFood extends React.Component {
+  handleClickShare = () => {
+    const { handleShareRecipe } = this.props;
+    handleShareRecipe();
+  }
+
   render() {
-    const { shareIcon, whiteHeartIcon, objRecipeFood } = this.props;
+    const { shareIcon, whiteHeartIcon, objRecipeFood, linkCopy } = this.props;
+
+    const comparCopy = (linkCopy)
+      ? (<span className="msgLinkCopy">Link copied!</span>) : '';
 
     return (
       <header className="headerDetailsFood">
@@ -37,7 +45,7 @@ class HeaderDetailsFood extends React.Component {
               data-testid="share-btn"
               src={ shareIcon }
               alt="Ícone que para compartilhar a receita"
-              onClick={ this.handleShareRecipe }
+              onClick={ this.handleClickShare }
             />
             <input
               type="image"
@@ -47,6 +55,7 @@ class HeaderDetailsFood extends React.Component {
               alt="Ícone que para favoritar a receita"
               onClick={ this.handleFavoriteRecipe }
             />
+            { comparCopy }
           </div>
         </section>
       </header>
@@ -62,6 +71,8 @@ HeaderDetailsFood.propTypes = {
   }).isRequired,
   shareIcon: PropTypes.string.isRequired,
   whiteHeartIcon: PropTypes.string.isRequired,
+  handleShareRecipe: PropTypes.func.isRequired,
+  linkCopy: PropTypes.bool.isRequired,
 };
 
 export default HeaderDetailsFood;
