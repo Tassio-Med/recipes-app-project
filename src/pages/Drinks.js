@@ -16,12 +16,20 @@ class Drinks extends React.Component {
       categoryRecipes: '',
       btnCategoryIsON: false,
       updateBtnName: '',
+      // updateExplore: '',
     };
   }
 
   componentDidMount() {
     this.handlePageName();
   }
+
+  // updateExploreIngredient = () => {
+  //   const { filterExploreIngredient } = this.context;
+  //   this.setState({
+  //     updateExplore: filterExploreIngredient,
+  //   });
+  // }
 
   handlePageName = () => {
     const { match } = this.props;
@@ -77,6 +85,20 @@ class Drinks extends React.Component {
     }
   }
 
+  filterArraySearch = () => {
+    const { dataName, dataIngredient, filterRadios, dataFirstLetter } = this.context;
+
+    if (filterRadios === 'firstLetter') {
+      return dataFirstLetter.drinks;
+    }
+    if (filterRadios === 'name') {
+      return dataName.drinks;
+    }
+    if (filterRadios === 'ingredient') {
+      return dataIngredient.drinks;
+    }
+  };
+
   render() {
     const { titleDrinks, categoryRecipes } = this.state;
     const { pathRec, dataName, searchValue, searchOn, defaultDataDrink } = this.context;
@@ -85,7 +107,7 @@ class Drinks extends React.Component {
     const sectionCardsDrinks = (
       <section className="boxCards">
         {
-          dataName.drinks?.map((recipe, index) => (
+          this.filterArraySearch()?.drinks?.map((recipe, index) => (
             <CardRecipeDrinks
               dataTestINDEX={ index }
               source={ recipe.strDrinkThumb }
