@@ -16,12 +16,20 @@ class Drinks extends React.Component {
       categoryRecipes: '',
       btnCategoryIsON: false,
       updateBtnName: '',
+      // updateExplore: '',
     };
   }
 
   componentDidMount() {
     this.handlePageName();
   }
+
+  // updateExploreIngredient = () => {
+  //   const { filterExploreIngredient } = this.context;
+  //   this.setState({
+  //     updateExplore: filterExploreIngredient,
+  //   });
+  // }
 
   handlePageName = () => {
     const { match } = this.props;

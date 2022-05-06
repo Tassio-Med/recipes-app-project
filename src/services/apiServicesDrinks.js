@@ -62,3 +62,11 @@ export const fetchFoodsRecipes = async () => {
   const objRecipeFoods = dataFoods.meals;
   return objRecipeFoods;
 };
+
+export const fetchIngredientsDrink = async () => {
+  const urlName = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
+  const response = await fetch(urlName);
+  const data = await response.json();
+  // console.log('blalba', data);
+  return data;
+};

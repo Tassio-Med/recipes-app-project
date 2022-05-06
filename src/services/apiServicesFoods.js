@@ -62,3 +62,11 @@ export const fetchDrinksRecipes = async () => {
   const objRecipeDrinks = dataDrinks.drinks;
   return objRecipeDrinks;
 };
+
+export const fetchIngredientsFood = async () => {
+  const urlName = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
+  const response = await fetch(urlName);
+  const data = await response.json();
+  // console.log('blalba', data);
+  return data;
+};

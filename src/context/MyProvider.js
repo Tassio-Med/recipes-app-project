@@ -35,6 +35,7 @@ class MyProvider extends React.Component {
       pathRec: '',
       categoryListFood: '',
       categoryListDrink: '',
+      filterExploreIngredient: false,
     };
   }
 
@@ -70,22 +71,16 @@ class MyProvider extends React.Component {
   };
 
   resetFilters = () => {
-    this.setState({
-      searchValue: '',
-      filterRadios: '',
-      searchOn: false,
+    this.setState({ searchValue: '', filterRadios: '', searchOn: false,
     });
   }
 
   conditionalSearchFood = () => {
     const { dataName } = this.state;
     const firstIdFood = dataName.meals && dataName.meals.map((name) => (name.idMeal));
-
     if (dataName.meals?.length === 1) {
       const idFood = Number(firstIdFood);
       const pathRec = `foods/${idFood}`;
-      // console.log(pathRec);
-
       this.setState({
         pathRec,
       });
@@ -115,6 +110,16 @@ class MyProvider extends React.Component {
     }
   };
 
+  handleClickIngredient = (params) => {
+    const ingredientName = params;
+    this.setState({
+      searchOn: true,
+      filterRadios: 'ingredient',
+      searchValue: ingredientName,
+      filterExploreIngredient: true,
+    });
+  }
+
   handleSearchDrink = () => {
     this.conditionalApiCallDrink();
     this.alertConditionalByOne();
@@ -126,12 +131,9 @@ class MyProvider extends React.Component {
   conditionalSearchDrink = () => {
     const { dataName } = this.state;
     const firstIdDrink = dataName.drinks && dataName.drinks.map((name) => (name.idDrink));
-
     if (dataName.drinks?.length === 1) {
       const idDrink = Number(firstIdDrink);
       const pathRec = `drinks/${idDrink}`;
-      // console.log(pathRec);
-
       this.setState({
         pathRec,
       });
@@ -176,7 +178,6 @@ class MyProvider extends React.Component {
   handleUserEmail = () => {
     const userLocalStorage = localStorage.getItem('user');
     const userEmail = JSON.parse(userLocalStorage);
-
     this.setState({
       userEmail,
     });
@@ -194,12 +195,10 @@ class MyProvider extends React.Component {
 
   validatedLogin = () => {
     const { emailInput, passwordInput } = this.state;
-    const regexEmail = /^[^@]+@[^@]+\.[^@]+$/i;
-    const validEmail = regexEmail.test(emailInput);
+    const validEmail = /^[^@]+@[^@]+\.[^@]+$/i.test(emailInput);
     const SIX = 6;
     const validPassWord = passwordInput.length > SIX;
     const validLogin = validEmail && validPassWord;
-
     if (validLogin) {
       this.setState({
         isBtnDisable: false,
@@ -236,6 +235,7 @@ class MyProvider extends React.Component {
           handleCategoryListFood: this.handleCategoryListFood,
           handleCategoryListDrink: this.handleCategoryListDrink,
           resetFilters: this.resetFilters,
+          handleClickIngredient: this.handleClickIngredient,
         } }
       >
         {children}
