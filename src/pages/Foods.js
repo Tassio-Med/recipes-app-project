@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import CardRecipeFoods from '../components/CardRecipeFoods';
 import '../components/CardRecipes.css';
 import FiltersCategoryFood from '../components/FiltersCategoryFood';
+import { setFilterIngredientFood } from '../services/apiServicesFoods';
 
 class Foods extends React.Component {
   constructor() {
@@ -16,6 +17,8 @@ class Foods extends React.Component {
       categoryRecipes: '',
       btnCategoryIsON: false,
       updateBtnName: '',
+      dataIngredient: '',
+      exploreIngredient: false,
     };
   }
 
@@ -24,8 +27,8 @@ class Foods extends React.Component {
   }
 
   handlePageName = () => {
+    const { handleDefaultDataFoods, filterExploreIngredient } = this.context;
     const { match } = this.props;
-    const { handleDefaultDataFood } = this.context;
 
     let titleName;
 
@@ -35,10 +38,32 @@ class Foods extends React.Component {
         titleFood: titleName,
       });
     }
-    handleDefaultDataFood();
+    if (filterExploreIngredient) {
+      this.handleExploreRecipesByIngredient();
+    } else {
+      handleDefaultDataFoods();
+    }
   };
 
+  async handleExploreRecipesByIngredient() {
+    const { filterExploreIngredient, searchValue, resetFilters } = this.context;
+    if (filterExploreIngredient) {
+      const data = await setFilterIngredientFood(searchValue);
+      this.setState({
+        dataIngredient: data,
+        exploreIngredient: true,
+      }, () => resetFilters());
+    }
+    console.log('ta chegando aqui');
+  }
+
   filterByCategory = async (btnName) => {
+    const { filterExploreIngredient } = this.context;
+    if (filterExploreIngredient) {
+      this.setState({
+        exploreIngredient: false,
+      });
+    }
     const { btnCategoryIsON, updateBtnName } = this.state;
 
     if (btnName === 'All' && btnName !== updateBtnName) {
@@ -93,7 +118,8 @@ class Foods extends React.Component {
   };
 
   render() {
-    const { titleFood, categoryRecipes } = this.state;
+    const { titleFood, categoryRecipes, dataIngredient,
+      exploreIngredient } = this.state;
     const { pathRec, dataName, searchValue, searchOn, defaultDataFood } = this.context;
 
     const TWELVE = 12;
@@ -133,7 +159,26 @@ class Foods extends React.Component {
       </section>
     );
 
+    const resultExploreByIngredient = (
+      <section className="boxCards">
+        {
+          dataIngredient.meals?.map((elemento, index) => (
+            <CardRecipeFoods
+              dataTestINDEX={ index }
+              source={ elemento.strMealThumb }
+              recipeCardName={ elemento.strMeal }
+              key={ elemento.idMeal }
+              idRecipe={ elemento.idMeal }
+            />
+          )).slice(0, TWELVE)
+        }
+      </section>
+    );
+
     const comparSearchON = searchOn ? sectionCardsFood : defaultCardFood;
+    const comparExplore = (exploreIngredient)
+      ? resultExploreByIngredient : comparSearchON;
+
     const alertNoRecipes = 'Sorry, we haven\'t found any recipes for these filters.';
 
     return (
@@ -146,7 +191,7 @@ class Foods extends React.Component {
         <FiltersCategoryFood filterByCategory={ this.filterByCategory } />
 
         <section id="boxRecipes">
-          { comparSearchON }
+          { comparExplore }
         </section>
 
         <Footer />

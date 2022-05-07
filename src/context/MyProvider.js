@@ -81,9 +81,7 @@ class MyProvider extends React.Component {
     if (dataName.meals?.length === 1) {
       const idFood = Number(firstIdFood);
       const pathRec = `foods/${idFood}`;
-      this.setState({
-        pathRec,
-      });
+      this.setState({ pathRec });
     }
   }
 
