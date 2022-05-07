@@ -27,7 +27,7 @@ class Foods extends React.Component {
   }
 
   handlePageName = () => {
-    const { handleDefaultDataFoods, filterExploreIngredient } = this.context;
+    const { handleDefaultDataFood, filterExploreIngredient } = this.context;
     const { match } = this.props;
 
     let titleName;
@@ -41,7 +41,7 @@ class Foods extends React.Component {
     if (filterExploreIngredient) {
       this.handleExploreRecipesByIngredient();
     } else {
-      handleDefaultDataFoods();
+      handleDefaultDataFood();
     }
   };
 
