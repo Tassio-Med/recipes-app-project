@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../pages/FoodDetails.css';
 import '../pages/Recomendation.css';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 class HeaderDetailsFood extends React.Component {
   handleClickShare = () => {
@@ -9,8 +11,15 @@ class HeaderDetailsFood extends React.Component {
     handleShareRecipe();
   }
 
+  handleClickFavorite = () => {
+    const { handleFavoriteBtn } = this.props;
+    handleFavoriteBtn();
+  }
+
   render() {
-    const { shareIcon, whiteHeartIcon, objRecipeFood, linkCopy } = this.props;
+    const { shareIcon, favoriteIcon, objRecipeFood, linkCopy } = this.props;
+
+    const comparFavorite = (favoriteIcon) ? blackHeartIcon : whiteHeartIcon;
 
     const comparCopy = (linkCopy)
       ? (<span className="msgLinkCopy">Link copied!</span>) : '';
@@ -51,9 +60,9 @@ class HeaderDetailsFood extends React.Component {
               type="image"
               className="favoriteIconFood"
               data-testid="favorite-btn"
-              src={ whiteHeartIcon }
+              src={ comparFavorite }
               alt="Ícone que para favoritar a receita"
-              onClick={ this.handleFavoriteRecipe }
+              onClick={ this.handleClickFavorite }
             />
             { comparCopy }
           </div>
@@ -70,8 +79,9 @@ HeaderDetailsFood.propTypes = {
     strCategory: PropTypes.string,
   }).isRequired,
   shareIcon: PropTypes.string.isRequired,
-  whiteHeartIcon: PropTypes.string.isRequired,
   handleShareRecipe: PropTypes.func.isRequired,
+  favoriteIcon: PropTypes.bool.isRequired,
+  handleFavoriteBtn: PropTypes.func.isRequired,
   linkCopy: PropTypes.bool.isRequired,
 };
 

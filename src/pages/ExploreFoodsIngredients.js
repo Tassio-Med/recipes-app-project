@@ -45,7 +45,7 @@ class ExploreFoodsIngredients extends React.Component {
     const { handleClickIngredient } = this.context;
     const teste = target.src;
     const urlSplited = teste.split('/')[5].split('-')[0];
-    console.log(urlSplited);
+    // console.log(urlSplited);
 
     handleClickIngredient(urlSplited);
     history.push('/foods/');

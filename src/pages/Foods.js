@@ -54,7 +54,6 @@ class Foods extends React.Component {
         exploreIngredient: true,
       }, () => resetFilters());
     }
-    console.log('ta chegando aqui');
   }
 
   filterByCategory = async (btnName) => {

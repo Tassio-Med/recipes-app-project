@@ -41,7 +41,8 @@ class ExploreFoods extends React.Component {
 
   render() {
     const { titleExploreFood, idRecipe } = this.state;
-    console.log(idRecipe);
+    // console.log(idRecipe);
+
     return (
       <>
         <HeaderNoSearch titlePage={ titleExploreFood } />
