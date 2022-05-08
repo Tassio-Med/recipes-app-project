@@ -31,7 +31,7 @@ class App extends React.Component {
           />
           <Route
             exact
-            path=" /drinks/:IdDrinkRecipe/in-progress"
+            path="/drinks/:IdDrinkRecipe/in-progress"
             component={ DrinkDetailsProgress }
           />
           <Route exact path="/foods/:idFood" component={ FoodDetails } />
