@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import clipboardCopy from 'clipboard-copy';
 import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+// import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import './Recomendation.css';
 import './DrinkDetails.css';
 import { fetchIdDrinkRecipe, fetchFoodsRecipes } from '../services/apiServicesDrinks';
@@ -25,6 +25,7 @@ class DrinkDetails extends React.Component {
       recipeIsDone: false,
       progressRepiceIsOn: false,
       linkCopy: false,
+      favoriteIsOn: false,
     };
   }
 
@@ -33,6 +34,7 @@ class DrinkDetails extends React.Component {
     const idDrinkRecipe = params.idDrink;
     this.fetchRecipeById(idDrinkRecipe);
     this.handleStorageDoneRecipes(idDrinkRecipe);
+    this.handleStorageFavoriteDrink(idDrinkRecipe);
   }
 
   fetchRecipeById = async (idDrinkRecipe) => {
@@ -95,9 +97,102 @@ class DrinkDetails extends React.Component {
     }
   }
 
+  handleStorageFavoriteDrink = (idDrinkRecipe) => {
+    const storageFavoriteDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    // const favoriteRecipe = await objRecipeFood;
+
+    if (storageFavoriteDrink === null) {
+      this.setState({
+        favoriteIsOn: false,
+      });
+      // console.log('setou na montagem pra false, sem filtro');
+    }
+
+    if (storageFavoriteDrink !== null) {
+      const arrayFavoriteDrinks = Array.from(Object(storageFavoriteDrink));
+      const filterInFavoriteRecipes = arrayFavoriteDrinks?.some(
+        (favoriteDrink) => favoriteDrink.id === idDrinkRecipe
+        && favoriteDrink.type === 'drink',
+      );
+
+      if (filterInFavoriteRecipes) {
+        this.setState({
+          favoriteIsOn: true,
+        });
+        console.log('setou pra true, depois do filtro na montagem');
+      }
+      if (!filterInFavoriteRecipes) {
+        this.setState({
+          favoriteIsOn: false,
+        });
+      }
+      console.log('setou pra false, depois do filtro na montagem');
+      console.log(filterInFavoriteRecipes);
+      console.log(idDrinkRecipe);
+    }
+  };
+
+  setFavoriteFalseToTrue = (objRecipeDrink) => {
+    console.log('setou no click pra true');
+    console.log(objRecipeDrink);
+    const storageFavoriteDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
+
+    const favoriteRecipeDrink = {
+      id: objRecipeDrink.idDrink,
+      type: 'drink',
+      nationality: '',
+      category: objRecipeDrink.strCategory,
+      alcoholicOrNot: objRecipeDrink.strAlcoholic,
+      name: objRecipeDrink.strDrink,
+      image: objRecipeDrink.strDrinkThumb,
+    };
+
+    if (storageFavoriteDrink === null) {
+      // console.log('setou, de null p/ array, o primeiro obj, criando a chave');
+      localStorage.setItem('favoriteRecipes',
+        JSON.stringify([favoriteRecipeDrink]));
+    } else {
+      // console.log('setou, o array, usando prevState e incluindo mais um obj');
+      const arrayFavoriteDrinks = Array.from(Object(storageFavoriteDrink));
+      localStorage.setItem('favoriteRecipes',
+        JSON.stringify([...arrayFavoriteDrinks, favoriteRecipeDrink]));
+    }
+  }
+
+  setFavoriteTrueToFalse = (objRecipeDrink) => {
+    console.log('setou no click pra false');
+    const storageFavoriteDrink = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const arrayFavoriteDrinks = Array.from(Object(storageFavoriteDrink));
+
+    const filterInFavoriteRecipes = arrayFavoriteDrinks?.filter(
+      (favoriteDrink) => favoriteDrink.id !== objRecipeDrink.idDrink
+        && favoriteDrink.type === 'drink',
+    );
+    localStorage.setItem('favoriteRecipes',
+      JSON.stringify([...filterInFavoriteRecipes]));
+
+    // console.log('oi', objRecipeDrink);
+    // console.log([...filterInFavoriteRecipes]);
+  }
+
+  handleFavoriteBtn = async () => {
+    const { favoriteIsOn, objRecipeDrink } = this.state;
+    if (!favoriteIsOn) {
+      this.setState({
+        favoriteIsOn: true,
+      }, () => this.setFavoriteFalseToTrue(objRecipeDrink));
+    }
+    if (favoriteIsOn) {
+      this.setState({
+        favoriteIsOn: false,
+      }, () => this.setFavoriteTrueToFalse(objRecipeDrink));
+    }
+  }
+
   render() {
     const { objRecipeDrink, objRecipeFoods, recipeIsDone,
-      progressRepiceIsOn, btnStartIsOn, idDrinkRecipe, linkCopy } = this.state;
+      progressRepiceIsOn, btnStartIsOn, idDrinkRecipe, linkCopy,
+      favoriteIsOn } = this.state;
 
     const comparContinueRecipe = (!btnStartIsOn && !recipeIsDone && progressRepiceIsOn)
       ? (<BtnContinueDrinkRecipe idDrinkRecipe={ idDrinkRecipe } />)
@@ -111,9 +206,10 @@ class DrinkDetails extends React.Component {
       <>
         <HeaderDetailsDrink
           shareIcon={ shareIcon }
-          whiteHeartIcon={ whiteHeartIcon }
-          objRecipeDrink={ objRecipeDrink }
           handleShareRecipe={ this.handleShareRecipe }
+          favoriteIcon={ favoriteIsOn }
+          handleFavoriteBtn={ this.handleFavoriteBtn }
+          objRecipeDrink={ objRecipeDrink }
           linkCopy={ linkCopy }
         />
 
