@@ -1,0 +1,120 @@
+.imgRecipeDetailFood {
+  height: 250px;
+  width: 100%;
+}
+
+.subBoxHeader {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.boxTitlesFood {
+  display: flex;
+  flex-flow: row wrap;
+  width: 70%;
+}
+
+.titleDetailFood {
+  margin-bottom: 3px;
+  margin-left: 10px;
+  width: 100%;
+}
+
+.categoryRecipeFood {
+  margin-left: 10px;
+}
+
+.boxMediaIcons {
+  display: flex;
+  justify-content: space-around;
+  width: 100px;
+}
+
+.shareIconFood {
+  width: 30px;
+}
+
+.favoriteIconFood {
+  width: 30px;
+}
+
+.boxIngredientsFood {
+  margin-left: 10px;
+  width: 95%;
+}
+
+/* .titleIngredientsFood {} */
+.boxListIngredientsFood {
+  margin-left: 10px;
+}
+
+/* .ingredientLineFood {} */
+.boxInstructions {
+  margin-left: 10px;
+  width: 95%;
+
+}
+
+/* .titleBoxInstructions {} */
+.boxVideo {
+  width: 100%;
+}
+
+/* .titleBoxVideo {} */
+
+/* .textOfInstructions {} */
+.boxRecomendations {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+}
+
+.titleRecomendationDrink {
+  align-self: start;
+  display: flex;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.btnInitRecipeFood {
+  background-color: rgb(192, 178, 140);
+  border: solid rgb(245, 189, 35) 2px;
+  border-radius: 5px;
+  border-style: ridge;
+  bottom: 0;
+  color: black;
+  font-size: 15px;
+  font-weight: 900;
+  height: 30px;
+  margin-left: 15%;
+  margin-top: 610px;
+  position: fixed;
+  width: 70%;
+}
+
+.btnInitRecipeFood:hover {
+  background-color: rgb(245, 189, 35);
+  border: solid rgb(245, 189, 35) 2px;
+  border-radius: 5px;
+  border-style: ridge;
+  box-shadow: 0 0 1em black;
+  color: black;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 900;
+  height: 35px;
+  margin-left: 10%;
+  margin-top: 605px;
+  position: fixed;
+  width: 250px;
+}
+
+/* .boxMsgFinished {} */
+
+/* .msgRecipeFinished {} */
+
+/* .btnDoItAgain {} */

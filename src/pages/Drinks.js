@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import CardRecipeDrinks from '../components/CardRecipeDrinks';
 import '../components/CardRecipes.css';
 import FiltersCategoryDrink from '../components/FiltersCategoryDrink';
+import { setFilterIngredientDrink } from '../services/apiServicesDrinks';
 
 class Drinks extends React.Component {
   constructor() {
@@ -15,7 +16,10 @@ class Drinks extends React.Component {
       titleDrinks: '',
       categoryRecipes: '',
       btnCategoryIsON: false,
+      dataIngredient: '',
       updateBtnName: '',
+      // updateExplore: '',
+      exploreIngredient: false,
     };
   }
 
@@ -25,7 +29,7 @@ class Drinks extends React.Component {
 
   handlePageName = () => {
     const { match } = this.props;
-    const { handleDefaultDataDrink } = this.context;
+    const { handleDefaultDataDrink, filterExploreIngredient } = this.context;
 
     let titleName;
 
@@ -35,10 +39,32 @@ class Drinks extends React.Component {
         titleDrinks: titleName,
       });
     }
-    handleDefaultDataDrink();
+
+    if (filterExploreIngredient) {
+      this.handleExploreRecipesByIngredient();
+    } else {
+      handleDefaultDataDrink();
+    }
   };
 
+  handleExploreRecipesByIngredient = async () => {
+    const { filterExploreIngredient, searchValue, resetFilters } = this.context;
+    if (filterExploreIngredient) {
+      const data = await setFilterIngredientDrink(searchValue);
+      this.setState({
+        dataIngredient: data,
+        exploreIngredient: true,
+      }, () => resetFilters());
+    }
+  }
+
   filterByCategory = async (btnName) => {
+    const { filterExploreIngredient } = this.context;
+    if (filterExploreIngredient) {
+      this.setState({
+        exploreIngredient: false,
+      });
+    }
     const { btnCategoryIsON, updateBtnName } = this.state;
 
     if (btnName === 'All' && btnName !== updateBtnName) {
@@ -77,15 +103,30 @@ class Drinks extends React.Component {
     }
   }
 
+  filterArraySearch = () => {
+    const { dataName, dataIngredient, filterRadios, dataFirstLetter } = this.context;
+
+    if (filterRadios === 'firstLetter') {
+      return dataFirstLetter.drinks;
+    }
+    if (filterRadios === 'name') {
+      return dataName.drinks;
+    }
+    if (filterRadios === 'ingredient') {
+      return dataIngredient.drinks;
+    }
+  };
+
   render() {
-    const { titleDrinks, categoryRecipes } = this.state;
+    const { titleDrinks, categoryRecipes, dataIngredient,
+      exploreIngredient } = this.state;
     const { pathRec, dataName, searchValue, searchOn, defaultDataDrink } = this.context;
 
     const TWELVE = 12;
     const sectionCardsDrinks = (
       <section className="boxCards">
         {
-          dataName.drinks?.map((recipe, index) => (
+          this.filterArraySearch()?.map((recipe, index) => (
             <CardRecipeDrinks
               dataTestINDEX={ index }
               source={ recipe.strDrinkThumb }
@@ -118,7 +159,26 @@ class Drinks extends React.Component {
       </section>
     );
 
+    const resultExploreByIngredient = (
+      <section className="boxCards">
+        {
+          dataIngredient.drinks?.map((elemento, index) => (
+            <CardRecipeDrinks
+              dataTestINDEX={ index }
+              source={ elemento.strDrinkThumb }
+              recipeCardName={ elemento.strDrink }
+              key={ elemento.idDrink }
+              idRecipe={ elemento.idDrink }
+            />
+          )).slice(0, TWELVE)
+        }
+      </section>
+    );
+
     const comparSearchON = searchOn ? sectionCardsDrinks : defaultCardsDrinks;
+    const comparExplore = (exploreIngredient)
+      ? resultExploreByIngredient : comparSearchON;
+
     const alertNoRecipes = 'Sorry, we haven\'t found any recipes for these filters.';
 
     return (
@@ -131,7 +191,7 @@ class Drinks extends React.Component {
         <FiltersCategoryDrink filterByCategory={ this.filterByCategory } />
 
         <section className="boxRecipes">
-          { comparSearchON }
+          { comparExplore }
         </section>
 
         <Footer />

@@ -1,0 +1,12 @@
+.boxRecomendation {
+  display: flex;
+  flex-direction: row;
+  height: 230px;
+  margin-bottom: 35px;
+  overflow-x: scroll;
+  width: 95%;
+}
+
+.imgRecipeDetailRec {
+  width: 180px;
+}

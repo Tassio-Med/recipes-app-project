@@ -4,6 +4,8 @@
   flex-flow: row wrap;
   height: 75px;
   justify-content: space-evenly;
+  margin-bottom: 3px;
+  margin-top: 3px;
   width: 100%;
 }
 
@@ -14,7 +16,7 @@
   color: black;
   font-weight: 900;
   height: 30px;
-  width: 100px;
+  width: 115px;
 }
 
 .btnCategory:hover {
@@ -27,5 +29,5 @@
   cursor: pointer;
   font-weight: 900;
   height: 30px;
-  width: 100px;
+  width: 115px;
 }

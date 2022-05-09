@@ -29,7 +29,7 @@ class FiltersCategoryDrink extends React.Component {
     const FIVE = 5;
 
     return (
-      <section id="boxFilters">
+      <section className="boxFilters">
         <button
           type="button"
           className="btnCategory"

@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import Foods from './pages/Foods';
-import FoodsDetails from './pages/FoodsDetails';
+import FoodDetails from './pages/FoodDetails';
 import DrinkDetails from './pages/DrinkDetails';
 import Drinks from './pages/Drinks';
 import FoodsDetailsProgress from './pages/FoodsDetailsProgress';
@@ -26,16 +26,18 @@ class App extends React.Component {
         <Switch>
           <Route
             exact
-            path="/foods/{id-da-receita}/in-progress"
+            path="/foods/:idFoodRecipe/in-progress"
             component={ FoodsDetailsProgress }
           />
           <Route
             exact
-            path=" /drinks/{id-da-receita}/in-progress"
+            path="/drinks/:IdDrinkRecipe/in-progress"
             component={ DrinkDetailsProgress }
           />
-          <Route exact path="/foods/:idFood" component={ FoodsDetails } />
+          <Route exact path="/foods/:idFood" component={ FoodDetails } />
           <Route exact path="/drinks/:idDrink" component={ DrinkDetails } />
+          <Route exact path="/explore/foods" component={ ExploreFoods } />
+          <Route exact path="/explore/drinks" component={ ExploreDrinks } />
           <Route
             exact
             path="/explore/foods/ingredients"
@@ -52,8 +54,6 @@ class App extends React.Component {
             component={ ExploreFoodsNationalities }
           />
           <Route exact path="/profile" component={ Profile } />
-          <Route exact path="/explore/foods" component={ ExploreFoods } />
-          <Route exact path="/explore/drinks" component={ ExploreDrinks } />
           <Route exact path="/foods" component={ Foods } />
           <Route exact path="/drinks" component={ Drinks } />
           <Route exact path="/explore" component={ Explore } />

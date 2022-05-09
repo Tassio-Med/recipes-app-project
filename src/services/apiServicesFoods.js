@@ -26,7 +26,7 @@ export const setDefaultNameFood = async () => {
   const urlName = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
   const response = await fetch(urlName);
   const data = await response.json();
-  // console.log('name', data);
+  // console.log('name lista geral', data);
   return data;
 };
 
@@ -43,5 +43,30 @@ export const fetchCategoryListFood = async () => {
   const response = await fetch(urlName);
   const data = await response.json();
   // console.log('list', data);
+  return data;
+};
+
+export const fetchIdFoodRecipe = async (idFoodRecipe) => {
+  const urlById = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idFoodRecipe}`;
+  const response = await fetch(urlById);
+  const data = await response.json();
+  const objRecipeFood = data.meals[0];
+  return objRecipeFood;
+};
+
+// recomendations de Drinks para o foods
+export const fetchDrinksRecipes = async () => {
+  const urlDrinksRecipe = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+  const responseDrinks = await fetch(urlDrinksRecipe);
+  const dataDrinks = await responseDrinks.json();
+  const objRecipeDrinks = dataDrinks.drinks;
+  return objRecipeDrinks;
+};
+
+export const fetchIngredientsFood = async () => {
+  const urlName = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
+  const response = await fetch(urlName);
+  const data = await response.json();
+  // console.log('blalba', data);
   return data;
 };
