@@ -39,14 +39,16 @@ class ExploreDrinksIngredients extends React.Component {
     }
   };
 
-  handleClickLink = ({ target }) => {
+  handleClickLink = (param) => {
     const { history } = this.props;
     const { handleClickIngredient } = this.context;
-    const teste = target.src;
-    const urlSplited = teste.split('/')[5].split('-')[0];
+
+    // const teste = target.src;
+    // console.log(teste);
+    // const urlSplited = teste.split('/')[5].split('-')[0];
     // console.log(urlSplited);
 
-    handleClickIngredient(urlSplited);
+    handleClickIngredient(param);
     history.push('/drinks/');
   }
 
@@ -72,7 +74,9 @@ class ExploreDrinksIngredients extends React.Component {
                   src={ `https://www.thecocktaildb.com/images/ingredients/${ingre}-Small.png` }
                   alt={ ingre }
                   data-testid={ `${index}-card-img` }
-                  onClick={ this.handleClickLink }
+                  onClick={ () => {
+                    this.handleClickLink(ingre);
+                  } }
                 />
                 <p
                   className="titleCard"

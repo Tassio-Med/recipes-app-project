@@ -45,7 +45,7 @@ class Foods extends React.Component {
     }
   };
 
-  async handleExploreRecipesByIngredient() {
+  handleExploreRecipesByIngredient = async () => {
     const { filterExploreIngredient, searchValue, resetFilters } = this.context;
     if (filterExploreIngredient) {
       const data = await setFilterIngredientFood(searchValue);

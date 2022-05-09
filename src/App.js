@@ -36,6 +36,8 @@ class App extends React.Component {
           />
           <Route exact path="/foods/:idFood" component={ FoodDetails } />
           <Route exact path="/drinks/:idDrink" component={ DrinkDetails } />
+          <Route exact path="/explore/foods" component={ ExploreFoods } />
+          <Route exact path="/explore/drinks" component={ ExploreDrinks } />
           <Route
             exact
             path="/explore/foods/ingredients"
@@ -52,8 +54,6 @@ class App extends React.Component {
             component={ ExploreFoodsNationalities }
           />
           <Route exact path="/profile" component={ Profile } />
-          <Route exact path="/explore/foods" component={ ExploreFoods } />
-          <Route exact path="/explore/drinks" component={ ExploreDrinks } />
           <Route exact path="/foods" component={ Foods } />
           <Route exact path="/drinks" component={ Drinks } />
           <Route exact path="/explore" component={ Explore } />
