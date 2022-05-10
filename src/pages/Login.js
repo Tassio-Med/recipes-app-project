@@ -8,7 +8,7 @@ class Login extends React.Component {
     const { handleChange, isBtnDisable, handleBtnLogin } = this.context;
     return (
       <div className="boxLogin">
-        <h1 className="titleApp">App Recipe</h1>
+        <h1 className="titleApp">[App Recipe]</h1>
         <section className="boxInputsLogin">
           <h2 className="subTitleLogin">Login</h2>
           <label
