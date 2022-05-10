@@ -1,3 +1,22 @@
+/* CSS HEX */
+:root {
+
+  --card: white;
+
+  --bg: #f5f5f5ff;
+
+  --shadow: #e6e6e6ff;
+
+  --orange3: #ff7b00ff;
+
+  --orange2: #ff810cff;
+
+  --orange1: #ff8717ff;
+
+  --yellow: #ffc800ff;
+}
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,7 +25,7 @@
 
 .boxLogin {
   align-items: center;
-  background-color: rgb(37, 35, 30);
+  background-color: var(--bg);
 
   /* background: url('/src/images/backgrounLogin.jpg');
   background-repeat: no-repeat;

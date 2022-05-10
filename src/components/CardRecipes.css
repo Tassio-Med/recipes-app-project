@@ -1,3 +1,14 @@
+/*
+CSS HEX
+--white1: #ffffffff;
+--white2: #f5f5f5ff;
+--white3: #e6e6e6ff;
+--orange3: #ff7b00ff;
+--orange2: #ff810cff;
+--orange1: #ff8717ff;
+--yellow: #ffc800ff;
+*/
+
 .boxCards {
   display: flex;
   flex-wrap: wrap;
