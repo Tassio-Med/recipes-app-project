@@ -1,3 +1,18 @@
+@font-face {
+  font-family: Foodpacker;
+  src: url(../fontes/foodpacker/Foodpacker.otf);
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url(../fontes/Roboto/Roboto-Thin.ttf);
+}
+
+@font-face {
+  font-family: Roboto2;
+  src: url(../fontes/Roboto/Roboto-Light.ttf);
+}
+
 /* CSS HEX */
 :root {
 
@@ -37,24 +52,20 @@
 }
 
 .titleApp {
-  background-color: none;
-  border: none;
-  color: whitesmoke;
+  color: var(--orange1);
+  font-family: Foodpacker;
   font-size: 40px;
   margin-bottom: 25px;
   margin-top: 15px;
-  text-shadow: 0 0 0.5em rgb(245, 189, 35) , 2px 2px 4px rgb(245, 189, 35);
+  text-shadow: var(--shadow);
 }
 
 .boxInputsLogin {
   align-items: center;
-
-  /* background-color: rgba(37, 35, 30, 0.944); */
-  background-color: rgba(192, 178, 140, 0.947);
-  border: solid rgb(245, 189, 35) 5px;
+  background-color: var(--card);
+  border: none;
   border-radius: 30px;
-  border-style: ridge;
-  box-shadow: 0 0 0.85em rgb(245, 189, 35);
+  box-shadow: 0 0 0.85em var(--shadow);
   display: flex;
   flex-direction: column;
   height: 75vh;
@@ -63,23 +74,24 @@
 }
 
 .subTitleLogin {
-  color: black;
+  font-family: Roboto2;
+  color: var(--orange1);
   font-size: 24px;
   font-weight: 900;
   margin-bottom: 30px;
   margin-top: 30px;
-  text-decoration: underline;
 }
 
 .labelInput {
   align-items: center;
-  background-color: rgb(192, 178, 140);
-  border: solid rgb(245, 189, 35) 2px;
+  background-color: var(--card);
   border-radius: 5px;
-  border-style: ridge;
+  box-shadow: 0 0 0.85em var(--shadow);
   display: flex;
   flex-direction: column;
-  font-size: 20px;
+  font-family: Roboto;
+  color: var(--orange3);
+  font-size: 15px;
   font-weight: 900;
   margin-bottom: 45px;
   padding: 20px;
@@ -87,24 +99,28 @@
 }
 
 .inputEmail {
-  border-radius: 2px;
+  border-color: var(--orange1);
+  border-radius: 10px;
+  border-width: 1px;
   margin-top: 5px;
   text-align: center;
   width: 180px;
 }
 
 .inputPassword {
-  border-radius: 2px;
+  border-color: var(--orange1);
+  border-radius: 10px;
+  border-width: 1px;
   margin-top: 5px;
   text-align: center;
   width: 180px;
 }
 
 .btnLogin {
-  border: solid rgb(245, 189, 35) 2px;
-  border-radius: 5px;
-  border-style: ridge;
-  color: black;
+  background-color: var(--orange2);
+  border: none;
+  border-radius: 20px;
+  color: var(--card);
   font-size: 15px;
   font-weight: 900;
   height: 35px;
@@ -113,12 +129,9 @@
 }
 
 .btnLogin:hover {
-  background-color: rgb(245, 189, 35);
-  border: solid rgb(245, 189, 35) 2px;
-  border-radius: 5px;
-  border-style: ridge;
+  background-color: var(--orange2);
+  border: none;
   box-shadow: 0 0 1em black;
-  color: black;
   cursor: pointer;
   font-weight: 900;
   height: 35px;
