@@ -1,13 +1,30 @@
-/*
-CSS HEX
---white1: #ffffffff;
---white2: #f5f5f5ff;
---white3: #e6e6e6ff;
---orange3: #ff7b00ff;
---orange2: #ff810cff;
---orange1: #ff8717ff;
---yellow: #ffc800ff;
-*/
+@font-face {
+  font-family: Roboto;
+  src: url('../fontes/Roboto/Roboto-Thin.ttf');
+}
+
+@font-face {
+  font-family: Roboto2;
+  src: url('../fontes/Roboto/Roboto-Light.ttf');
+}
+
+/* CSS HEX */
+:root {
+
+  --card: white;
+
+  --bg: #f5f5f5ff;
+
+  --shadow: #e6e6e6ff;
+
+  --orange3: rgb(255, 123, 0);
+
+  --orange2: #ff810cff;
+
+  --orange1: #ff8717ff;
+
+  --yellow: #ffc800ff;
+}
 
 .boxCards {
   display: flex;

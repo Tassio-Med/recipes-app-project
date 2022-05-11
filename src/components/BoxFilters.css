@@ -1,22 +1,58 @@
+@font-face {
+  font-family: Roboto;
+  src: url('../fontes/Roboto/Roboto-Thin.ttf');
+
+  /* font-family: Roboto , Arial , Helvetica , sans-serif; */
+}
+
+@font-face {
+  font-family: Roboto2;
+  src: url('../fontes/Roboto/Roboto-Light.ttf');
+
+  /* font-family: Roboto2 , Arial , Helvetica , sans-serif; */
+}
+
+:root {
+
+  --card: white;
+
+  --bg: #f5f5f5ff;
+
+  --shadow: #e6e6e6ff;
+
+  --orange3: rgb(255, 123, 0);
+
+  --orange2: #ff810cff;
+
+  --orange1: #ff8717ff;
+
+  --yellow: #ffc800ff;
+
+  --sombra: rgb(207, 202, 202);
+}
+
 .boxFilters {
   align-items: center;
   display: flex;
   flex-flow: row wrap;
   height: 75px;
   justify-content: space-evenly;
-  margin-bottom: 3px;
-  margin-top: 3px;
+  margin-bottom: 20px;
+  margin-top: 20px;
   width: 100%;
 }
 
 .btnCategory {
-  border: solid rgb(245, 189, 35) 2px;
-  border-radius: 5px;
-  border-style: ridge;
+  background-color: white;
+  border: solid var(--orange1) 1px;
+  border-radius: 10px;
+  border-style: solid;
+  box-shadow: -2px 5px 16px -2px rgb(207, 202, 202);
   color: black;
+  font-family: Roboto , Arial , Helvetica , sans-serif;
   font-weight: 900;
   height: 30px;
-  width: 115px;
+  width: 98px;
 }
 
 .btnCategory:hover {

@@ -1,7 +1,41 @@
+@font-face {
+  font-family: Foodpacker;
+  src: url('../fontes/foodpacker/Foodpacker.otf');
+}
+
+/*  font-family: Foodpacker , Arial , Helvetica , sans-serif; */
+
+/* CSS HEX */
+:root {
+
+  --card: white;
+
+  --bg: #f5f5f5ff;
+
+  --shadow: #e6e6e6ff;
+
+  --orange3: rgb(255, 123, 0);
+
+  --orange2: #ff810cff;
+
+  --orange1: #ff8717ff;
+
+  --yellow: #ffc800ff;
+
+  --sombra: rgb(207, 202, 202);
+}
+
+body {
+  background-color: white;
+}
+
 .boxHeader {
   align-items: center;
-  background-color: rgb(199, 150, 27);
+  background-color: white;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 7px 18px 0 rgb(207, 202, 202);
   display: flex;
+  font-family: Foodpacker , Arial , Helvetica , sans-serif;
   height: 50px;
   justify-content: space-between;
 }
@@ -11,14 +45,18 @@
 }
 
 .titlePage {
+  color: var(--orange1);
   display: flex;
+  font-size: 28px;
   justify-items: center;
 }
 
 .searchIcon {
   margin-right: 10px;
+  width: 7%;
 }
 
 .searchProfile {
   margin-left: 10px;
+  width: 67%;
 }
