@@ -22,7 +22,7 @@
 
   --shadow: #e6e6e6ff;
 
-  --orange3: #ff7b00ff;
+  --orange3: rgb(255, 123, 0);
 
   --orange2: #ff810cff;
 
@@ -40,14 +40,14 @@
 
 .boxLogin {
   align-items: center;
-  background-color: var(--bg);
+  background-color: var(--card);
 
   /* background: url('/src/images/backgrounLogin.jpg');
   background-repeat: no-repeat;
   background-size: cover; */
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 80vh;
   width: 100%;
 }
 
@@ -68,9 +68,9 @@
   box-shadow: 0 0 0.85em var(--shadow);
   display: flex;
   flex-direction: column;
-  height: 75vh;
+  height: 60vh;
   justify-content: flex-start;
-  width: 80%;
+  width: 70%;
 }
 
 .subTitleLogin {
@@ -93,7 +93,7 @@
   font-family: Roboto , Arial , Helvetica , sans-serif;
   font-size: 15px;
   font-weight: 900;
-  margin-bottom: 45px;
+  margin-bottom: 30px;
   padding: 20px;
   width: 75%;
 }
@@ -101,6 +101,7 @@
 .inputEmail {
   border-color: var(--orange1);
   border-radius: 10px;
+  border-style: solid;
   border-width: 1px;
   margin-top: 5px;
   text-align: center;
@@ -110,6 +111,7 @@
 .inputPassword {
   border-color: var(--orange1);
   border-radius: 10px;
+  border-style: solid;
   border-width: 1px;
   margin-top: 5px;
   text-align: center;
@@ -117,26 +119,45 @@
 }
 
 .btnLogin {
-  background-color: var(--orange2);
+  background-color: rgb(255, 123, 0);
   border: none;
   border-radius: 20px;
+  box-shadow: 2px 2px 4px var(--shadow);
   color: var(--card);
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
   font-size: 15px;
   font-weight: 900;
   height: 35px;
-  text-transform: uppercase;
+  overflow: hidden;
+  position: relative;
   width: 120px;
 }
 
-.btnLogin:hover {
-  background-color: var(--orange2);
-  border: none;
-  box-shadow: 0 0 1em black;
-  cursor: pointer;
-  font-weight: 900;
-  height: 35px;
-  text-transform: uppercase;
-  width: 120px;
+.label {
+  position: relative;
+  top: -1px;
+}
+
+.transition {
+  background-color: white;
+  border-radius: 9999px;
+  height: 0;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  width: 0;
+}
+
+button:hover .transition {
+  height: 14em;
+  width: 14em;
+}
+
+button:active {
+  transform: scale(0.97);
 }
 
 /** Para a Imagem de fundo da entrada */
