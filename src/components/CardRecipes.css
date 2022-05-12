@@ -4,8 +4,8 @@
 }
 
 @font-face {
-  font-family: Roboto2;
-  src: url('../fontes/Roboto/Roboto-Light.ttf');
+  font-family: Roboto3;
+  src: url('../fontes/Roboto/Roboto-Medium.ttf');
 }
 
 /* CSS HEX */
@@ -42,19 +42,23 @@
 }
 
 .imgCard {
-  border: solid 3px rgb(210, 162, 20);
+  border: solid 1px var(--orange1);
   border-radius: 30px;
-  border-style: ridge;
+  box-shadow: -2px 5px 16px -2px rgb(207, 202, 202);
+  margin-bottom: 7px;
 }
 
 .eachCardIngredient {
   display: flex;
   flex-direction: column;
-  margin: 1px;
+  margin: 3px;
   text-align: center;
   width: 170px;
 }
 
 .titleCard {
   color: black;
+  font-family: Roboto3 , Arial , Helvetica , sans-serif;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
 }

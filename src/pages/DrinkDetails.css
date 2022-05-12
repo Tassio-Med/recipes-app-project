@@ -1,4 +1,52 @@
+@font-face {
+  font-family: Foodpacker;
+  src: url('../fontes/foodpacker/Foodpacker.otf');
+
+  /* font-family: Foodpacker , Arial , Helvetica , sans-serif; */
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('../fontes/Roboto/Roboto-Thin.ttf');
+
+  /* font-family: Roboto , Arial , Helvetica , sans-serif; */
+}
+
+@font-face {
+  font-family: Roboto2;
+  src: url('../fontes/Roboto/Roboto-Light.ttf');
+
+  /* font-family: Roboto2 , Arial , Helvetica , sans-serif; */
+}
+
+@font-face {
+  font-family: Roboto3;
+  src: url('../fontes/Roboto/Roboto-Medium.ttf');
+
+  /* font-family: Roboto3 , Arial , Helvetica , sans-serif; */
+}
+
+/* CSS HEX */
+:root {
+
+  --card: white;
+
+  --bg: #f5f5f5ff;
+
+  --shadow: #e6e6e6ff;
+
+  --orange3: rgb(255, 123, 0);
+
+  --orange2: #ff810cff;
+
+  --orange1: #ff8717ff;
+
+  --yellow: #ffc800ff;
+}
+
 .imgRecipeDetailDrink {
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 7px 18px 0 rgb(207, 202, 202);
   height: 250px;
   width: 100%;
 }
@@ -17,12 +65,16 @@
 }
 
 .titleDetailDrink {
-  margin-bottom: 3px;
+  font-family: Roboto3 , Arial , Helvetica , sans-serif;
+  margin-bottom: 20px;
   margin-left: 10px;
+  margin-top: 10px;
   width: 100%;
 }
 
 .categoryRecipeDrink {
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
+  margin-bottom: 10px;
   margin-left: 10px;
 }
 
@@ -33,10 +85,14 @@
 }
 
 .shareIconDrink {
+  margin-bottom: 20px;
+  margin-top: -8px;
   width: 30px;
 }
 
 .favoriteIconDrink {
+  margin-bottom: 20px;
+  margin-top: -8px;
   width: 30px;
 }
 
@@ -45,34 +101,50 @@
   width: 95%;
 }
 
-/* .titleIngredientsDrink {} */
+.titleIngredientsDrink {
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
+  margin-bottom: 5px;
+}
+
 .boxListIngredientsDrink {
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
   margin-left: 10px;
 }
 
-/* .ingredientLineDrink {} */
+.ingredientLineDrink {
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
+}
+
 .boxInstructions {
   margin-left: 10px;
   width: 95%;
 
 }
 
-/* .titleBoxInstructions {} */
+.titleBoxInstructions {
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
 
-/* .textOfInstructions {} */
+.textOfInstructions {
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
+}
+
 .boxRecomendations {
   align-items: center;
   display: flex;
   flex-direction: column;
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
   width: 360px;
 }
 
 .titleRecomendationDrink {
   align-self: start;
   display: flex;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   margin-left: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .btnInitRecipeDrink {
@@ -106,4 +178,8 @@
   margin-top: 605px;
   position: fixed;
   width: 250px;
+}
+
+h5 {
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
 }

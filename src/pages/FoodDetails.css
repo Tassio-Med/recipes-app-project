@@ -81,22 +81,37 @@
 }
 
 .btnInitRecipeFood {
-  background-color: rgb(192, 178, 140);
-  border: solid rgb(245, 189, 35) 2px;
-  border-radius: 5px;
-  border-style: ridge;
-  bottom: 0;
-  color: black;
+
+  /*
+  background-color: rgb(255, 123, 0);
+  border: none;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px var(--shadow);
+  color: var(--card);
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
   font-size: 15px;
   font-weight: 900;
   height: 30px;
+  position: fixed;
+  width: 120px;
+  */
+  background-color: rgb(255, 123, 0);
+  border: none;
+  border-radius: 20px;
+  bottom: 0;
+  color: white;
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  height: 30px;
+  letter-spacing: 0.7px;
   margin-left: 15%;
   margin-top: 610px;
   position: fixed;
   width: 70%;
 }
 
-.btnInitRecipeFood:hover {
+/* .btnInitRecipeFood:hover {
   background-color: rgb(245, 189, 35);
   border: solid rgb(245, 189, 35) 2px;
   border-radius: 5px;
@@ -111,7 +126,7 @@
   margin-top: 605px;
   position: fixed;
   width: 250px;
-}
+} */
 
 /* .boxMsgFinished {} */
 
