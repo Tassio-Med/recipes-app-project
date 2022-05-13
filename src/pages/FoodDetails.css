@@ -1,4 +1,52 @@
+@font-face {
+  font-family: Foodpacker;
+  src: url('../fontes/foodpacker/Foodpacker.otf');
+
+  /* font-family: Foodpacker , Arial , Helvetica , sans-serif; */
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('../fontes/Roboto/Roboto-Thin.ttf');
+
+  /* font-family: Roboto , Arial , Helvetica , sans-serif; */
+}
+
+@font-face {
+  font-family: Roboto2;
+  src: url('../fontes/Roboto/Roboto-Light.ttf');
+
+  /* font-family: Roboto2 , Arial , Helvetica , sans-serif; */
+}
+
+@font-face {
+  font-family: Roboto3;
+  src: url('../fontes/Roboto/Roboto-Medium.ttf');
+
+  /* font-family: Roboto3 , Arial , Helvetica , sans-serif; */
+}
+
+/* CSS HEX */
+:root {
+
+  --card: white;
+
+  --bg: #f5f5f5ff;
+
+  --shadow: #e6e6e6ff;
+
+  --orange3: rgb(255, 123, 0);
+
+  --orange2: #ff810cff;
+
+  --orange1: #ff8717ff;
+
+  --yellow: #ffc800ff;
+}
+
 .imgRecipeDetailFood {
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 7px 18px 0 rgb(207, 202, 202);
   height: 250px;
   width: 100%;
 }
@@ -10,6 +58,11 @@
   width: 100%;
 }
 
+.titleIngredientsFood {
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
+  margin-bottom: 5px;
+}
+
 .boxTitlesFood {
   display: flex;
   flex-flow: row wrap;
@@ -17,12 +70,20 @@
 }
 
 .titleDetailFood {
-  margin-bottom: 3px;
+  font-family: Roboto3 , Arial , Helvetica , sans-serif;
+  margin-bottom: 20px;
   margin-left: 10px;
+  margin-top: 10px;
   width: 100%;
 }
 
+.ingredientLineFood {
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
+}
+
 .categoryRecipeFood {
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
+  margin-bottom: 10px;
   margin-left: 10px;
 }
 
@@ -33,10 +94,14 @@
 }
 
 .shareIconFood {
+  margin-bottom: 20px;
+  margin-top: -8px;
   width: 30px;
 }
 
 .favoriteIconFood {
+  margin-bottom: 20px;
+  margin-top: -8px;
   width: 30px;
 }
 
@@ -59,12 +124,23 @@
 
 /* .titleBoxInstructions {} */
 .boxVideo {
+  margin-bottom: 40px;
   width: 100%;
 }
 
-/* .titleBoxVideo {} */
+.titleBoxVideo {
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
+  margin-bottom: 15px;
+  margin-left: 10px;
+  margin-top: 40px;
+}
 
-/* .textOfInstructions {} */
+.textOfInstructions {
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
 .boxRecomendations {
   align-items: center;
   display: flex;
@@ -105,10 +181,10 @@
   font-weight: 900;
   height: 30px;
   letter-spacing: 0.7px;
-  margin-left: 15%;
+  margin-left: 28%;
   margin-top: 610px;
   position: fixed;
-  width: 70%;
+  width: 40%;
 }
 
 /* .btnInitRecipeFood:hover {
