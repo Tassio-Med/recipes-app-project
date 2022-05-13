@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import MyContext from '../context/MyContext';
 import HeaderNoSearch from '../components/HeaderNoSearch';
 import Footer from '../components/Footer';
+import '../components/Header.css';
 
 // const defaultEmail = { email: 'email@mail.com' };
 
@@ -46,7 +47,9 @@ class Profile extends React.Component {
         <HeaderNoSearch titlePage={ titleProfile } />
         <main>
           <div className="boxProfile">
-            <p data-testid="profile-email">{ userLocalStorage?.email }</p>
+            <p data-testid="profile-email" className="email">
+              { userLocalStorage?.email }
+            </p>
             <br />
             <Link to="/done-recipes">
               <button type="button" data-testid="profile-done-btn">

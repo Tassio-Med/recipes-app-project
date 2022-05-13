@@ -1,6 +1,29 @@
 @font-face {
   font-family: Foodpacker;
   src: url('../fontes/foodpacker/Foodpacker.otf');
+
+  /* font-family: Foodpacker , Arial , Helvetica , sans-serif; */
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('../fontes/Roboto/Roboto-Thin.ttf');
+
+  /* font-family: Roboto , Arial , Helvetica , sans-serif; */
+}
+
+@font-face {
+  font-family: Roboto2;
+  src: url('../fontes/Roboto/Roboto-Light.ttf');
+
+  /* font-family: Roboto2 , Arial , Helvetica , sans-serif; */
+}
+
+@font-face {
+  font-family: Roboto3;
+  src: url('../fontes/Roboto/Roboto-Medium.ttf');
+
+  /* font-family: Roboto3 , Arial , Helvetica , sans-serif; */
 }
 
 /*  font-family: Foodpacker , Arial , Helvetica , sans-serif; */
@@ -40,10 +63,6 @@ body {
   justify-content: space-between;
 }
 
-.HeaderNoSearch {
-  display: flex;
-}
-
 .titlePage {
   color: var(--orange1);
   display: flex;
@@ -59,4 +78,69 @@ body {
 .searchProfile {
   margin-left: 10px;
   width: 67%;
+}
+
+/* PROFILE */
+.HeaderNoSearch {
+  align-items: center;
+  background-color: white;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 7px 18px 0 rgb(207, 202, 202);
+  display: flex;
+  font-family: Foodpacker , Arial , Helvetica , sans-serif;
+  height: 50px;
+
+  /* justify-content: space-between; */
+}
+
+.titleProfile {
+  color: var(--orange1);
+  display: flex;
+  font-size: 28px;
+  justify-items: center;
+  margin-left: 110px;
+}
+
+img {
+  margin-left: px;
+}
+
+.boxProfile {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  background-color: rgb(255, 123, 0);
+  border: none;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px var(--shadow);
+  color: var(--card);
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  height: 35px;
+  overflow: hidden;
+  position: relative;
+  width: 120px;
+}
+
+.profile {
+  margin-left: 15px;
+  width: 64%;
+}
+
+.email {
+  align-items: center;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 7px 18px 0 rgb(207, 202, 202);
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  padding-left: 80px;
+  padding-top: 20px;
+  width: 360px;
 }

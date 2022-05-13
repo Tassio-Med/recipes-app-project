@@ -12,12 +12,18 @@ class HeaderNoSearch extends React.Component {
       <nav className="HeaderNoSearch">
         <Link to="/profile">
           <img
+            className="profile"
             src={ profileIcon }
             alt="Ícone que redireciona para a página de perfil."
             data-testid="profile-top-btn"
           />
         </Link>
-        <p data-testid="page-title">{titlePage}</p>
+        <p
+          className="titleProfile"
+          data-testid="page-title"
+        >
+          {titlePage}
+        </p>
       </nav>
     );
   }
