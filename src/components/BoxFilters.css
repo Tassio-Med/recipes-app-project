@@ -56,14 +56,11 @@
 }
 
 .btnCategory:hover {
-  background-color: rgb(245, 189, 35);
-  border: solid rgb(245, 189, 35) 2px;
-  border-radius: 5px;
-  border-style: ridge;
-  box-shadow: 0 0 0.7em black;
-  color: black;
+  background-color: var(--orange3);
+  border: solid var(--orange1) 1px;
+  border-style: solid;
+  box-shadow: -2px 5px 16px -2px rgb(207, 202, 202);
+  color: white;
   cursor: pointer;
-  font-weight: 900;
-  height: 30px;
-  width: 115px;
+  font-family: Roboto2 , Arial , Helvetica , sans-serif;
 }
